@@ -1,0 +1,23 @@
+
+/**********/
+/* Global */
+/**********/
+html {
+  font-size: 62.5%; // 10px
+}
+
+body, html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  color: #000;
+  font-size: 1.6rem;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+*
+{
+  box-sizing: border-box;
+}

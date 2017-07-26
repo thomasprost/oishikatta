@@ -1,0 +1,23 @@
+/*
+  Reset & Normalize
+*/
+
+@import "partials/common/reset-normalize";
+
+/*
+  Website's common styles
+*/
+@import "partials/common/base";
+
+/*
+  Layout
+*/
+
+@import "partials/layout/header";
+
+
+/*
+  Pages specific
+*/
+
+@import "partials/pages/home";
