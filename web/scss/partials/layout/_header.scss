@@ -1,0 +1,31 @@
+body > header {
+  padding-top: 20px;
+  height: 80px;
+  background-color: #fff;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 1px 1px 5px 1px $dark__blue;
+
+  #logo{
+    float: left;
+    background-image: url('../images/logo.jpg');
+    background-size: cover;
+    height: 50px;
+    width: 65px;
+    display: block;
+  }
+  nav{
+    float: right;
+    padding-top: 12px;
+    ul
+    {
+      display: flex;
+
+      li{
+        margin: 0 10px;
+      }
+    }
+  }
+}

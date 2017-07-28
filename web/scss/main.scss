@@ -3,6 +3,7 @@
 */
 
 @import "partials/common/reset-normalize";
+@import "partials/common/variables";
 
 /*
   Website's common styles
@@ -14,6 +15,7 @@
 */
 
 @import "partials/layout/header";
+@import "partials/layout/recipe";
 
 
 /*

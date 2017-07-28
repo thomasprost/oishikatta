@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {% if recipe %}
+            <h2>{{ recipe.name }}</h2>
+            <p>{{ recipe.intro }}</p>
+            {{ recipe.numberPeople }}
+        {% endif %}
+    </div>
+
+{% endblock %}

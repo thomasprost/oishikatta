@@ -439,6 +439,7 @@ template {
 [hidden] {
   display: none; }
 
+/** Blue **/
 /*
   Website's common styles
 */
@@ -455,14 +456,70 @@ body, html {
 body {
   color: #000;
   font-size: 1.6rem;
-  font-family: "Helvetica Neue", sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 90px; }
 
 * {
   box-sizing: border-box; }
 
+.container {
+  width: 1100px;
+  margin: 0 auto;
+  max-width: 100%; }
+
+a {
+  text-decoration: none;
+  color: #1076BA; }
+  a:hover {
+    color: #5BA3D3; }
+
 /*
   Layout
 */
+body > header {
+  padding-top: 20px;
+  height: 80px;
+  background-color: #fff;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 1px 1px 5px 1px #1076BA; }
+  body > header #logo {
+    float: left;
+    background-image: url("../images/logo.jpg");
+    background-size: cover;
+    height: 50px;
+    width: 65px;
+    display: block; }
+  body > header nav {
+    float: right;
+    padding-top: 12px; }
+    body > header nav ul {
+      display: flex; }
+      body > header nav ul li {
+        margin: 0 10px; }
+
+section.recipe-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  section.recipe-list article {
+    flex-basis: 30%;
+    border: 2px solid #89D5F6;
+    border-radius: 4px;
+    min-height: 300px;
+    margin-bottom: 50px; }
+    section.recipe-list article img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px; }
+    section.recipe-list article h3 {
+      font-size: 2rem;
+      color: #5BA3D3;
+      text-align: center;
+      margin: 10px 0; }
+
 /*
   Pages specific
 */
