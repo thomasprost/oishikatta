@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
@@ -12,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="recipe")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RecipeRepository")
+ * @Vich\Uploadable
  */
 class Recipe
 {
@@ -40,6 +43,15 @@ class Recipe
      * @ORM\Column(name="intro", type="text", nullable=true)
      */
     private $intro;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="recipe_images", fileNameProperty="mainImage")
+     *
+     * @var File
+     */
+    private $mainImageFile;
 
     /**
      * @var string
@@ -175,6 +187,31 @@ class Recipe
     public function getIntro()
     {
         return $this->intro;
+    }
+
+    /**
+     * @param File $mainImage
+     */
+
+    public function setMainImageFile(File $mainImage = null)
+    {
+        $this->mainImageFile = $mainImage;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($mainImage) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getMainImageFile()
+    {
+        return $this->mainImageFile;
     }
 
     /**

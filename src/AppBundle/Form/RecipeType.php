@@ -4,9 +4,11 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use AppBundle\Entity\Recipe;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class RecipeType extends AbstractType
 {
@@ -15,7 +17,7 @@ class RecipeType extends AbstractType
         $builder
             ->add('name')
             ->add('intro')
-            ->add('mainImage')
+            ->add('mainImageFile', FileType::class)
             ->add('numberPeople')
             ->add('minutes')
             ->add('link')

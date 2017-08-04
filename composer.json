@@ -16,8 +16,10 @@
     "require": {
         "php": ">=5.5.9",
         "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-migrations-bundle": "^1.1",
         "doctrine/orm": "^2.5",
         "incenteev/composer-parameter-handler": "^2.0",
+        "knplabs/doctrine-behaviors": "~1.1",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "stof/doctrine-extensions-bundle": "^1.2",
@@ -26,9 +28,7 @@
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
         "twig/twig": "^1.0||^2.0",
-        "doctrine/doctrine-migrations-bundle": "^1.1",
-        "knplabs/doctrine-behaviors": "~1.1"
-
+        "vich/uploader-bundle": "^1.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

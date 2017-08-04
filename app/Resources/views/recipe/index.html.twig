@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="recipe-list">
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
-    </section>
+    <div class="container">
+        <section class="recipe-list">
+            {% if recipes %}
+                {% for r in recipes %}
+                    <article>
+                        <img src="{{ asset('uploads/images/recipes/'~ r.mainImage ~'') }}" alt="{{ r.name }}">
+                        <h3>{{ r.name }}</h3>
+                    </article>
+                {% endfor %}
+            {% endif %}
+        </section>
+    </div>
 {% endblock %}

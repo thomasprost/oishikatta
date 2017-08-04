@@ -7,6 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.recipe_images: /uploads/images/recipes
 
 framework:
     #esi: ~
@@ -82,3 +83,11 @@ swiftmailer:
 knp_doctrine_behaviors:
     sluggable:    true
     timestampable: true
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        recipe_images:
+            uri_prefix:         '%app.path.recipe_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/recipes'
+            namer:              vich_uploader.namer_origname
