@@ -1,11 +1,29 @@
 {% extends 'base.html.twig' %}
+{% block body_class %}add-recipe{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="recipe-header">
         <h1>Add a new recipe</h1>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
+        <div class="header-bg" style="background-image:url({{ asset('images/backgrounds/raspberry-cheesecake-with-grand-marnier.jpg') }})"></div>
+    </div>
+    <div class="container">
+            {{ form_start(form, {'attr': {'class': 'flex-container'}}) }}
+            <div class="half-width">
+                <h3>Prototype</h3>
+
+                {{ form_row(form.name) }}
+                {{ form_row(form.intro) }}
+                {{ form_row(form.numberPeople) }}
+                {{ form_row(form.minutes) }}
+                {{ form_row(form.link) }}
+
+            </div>
+            <div class="half-width">
+                <h3>Illustrate</h3>
+                {{ form_row(form.mainImageFile) }}
+            </div>
+            {{ form_end(form) }}
+
     </div>
 
 {% endblock %}

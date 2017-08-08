@@ -32,6 +32,13 @@ class Country
     /**
      * @var string
      *
+     * @ORM\Column(name="nameJa", type="string", length=191, unique=true)
+     */
+    private $nameJa;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
@@ -54,8 +61,9 @@ class Country
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($name)
     {
+        $this->name = $name;
         $this->recipes = new ArrayCollection();
     }
 
@@ -98,6 +106,30 @@ class Country
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set nameJa
+     *
+     * @param string $nameJa
+     *
+     * @return Country
+     */
+    public function setNameJa($nameJa)
+    {
+        $this->nameJa = $nameJa;
+
+        return $this;
+    }
+
+    /**
+     * Get nameJa
+     *
+     * @return string
+     */
+    public function getNameJa()
+    {
+        return $this->nameJa;
     }
 
     /**

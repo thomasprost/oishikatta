@@ -1,19 +1,20 @@
 body > header {
-  padding-top: 20px;
-  height: 80px;
+  padding-top: 10px;
+  height: 60px;
   background-color: #fff;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   box-shadow: 1px 1px 5px 1px $dark__blue;
 
   #logo{
     float: left;
     background-image: url('../images/logo.jpg');
     background-size: cover;
-    height: 50px;
-    width: 65px;
+    height: 42px;
+    width: 54px;
     display: block;
   }
   nav{

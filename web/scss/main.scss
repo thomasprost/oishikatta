@@ -2,13 +2,14 @@
   Reset & Normalize
 */
 
-@import "partials/common/reset-normalize";
+@import "partials/common/reset";
 @import "partials/common/variables";
 
 /*
   Website's common styles
 */
 @import "partials/common/base";
+@import "partials/common/form";
 
 /*
   Layout

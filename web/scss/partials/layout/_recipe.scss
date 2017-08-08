@@ -24,3 +24,18 @@ section.recipe-list{
 
   }
 }
+
+
+body.add-recipe
+{
+  .flex-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    .half-width{
+      width: 45%;
+    }
+  }
+}
