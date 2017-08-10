@@ -213,19 +213,53 @@ section.recipe-list {
   flex-wrap: wrap; }
   section.recipe-list article {
     flex-basis: 30%;
-    border: 2px solid #89D5F6;
-    border-radius: 4px;
     min-height: 300px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    background: #3085a3;
+    text-align: center;
+    cursor: pointer; }
+    section.recipe-list article .caption, section.recipe-list article .caption > a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    section.recipe-list article a {
+      z-index: 1000;
+      text-indent: 200%;
+      white-space: nowrap;
+      font-size: 0;
+      opacity: 0; }
     section.recipe-list article img {
       width: 100%;
-      height: auto;
-      margin-bottom: 20px; }
-    section.recipe-list article h3 {
-      font-size: 2rem;
-      color: #5BA3D3;
+      height: auto; }
+    section.recipe-list article img, section.recipe-list article h2 {
+      transition: transform 0.35s; }
+    section.recipe-list article h2, section.recipe-list article p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 30px; }
+    section.recipe-list article p {
+      text-transform: none;
+      font-size: 90%;
+      opacity: 0;
+      transition: opacity 0.35s, transform 0.35s;
+      transform: translate3d(0, 50px, 0); }
+    section.recipe-list article h2 {
+      font-size: 2.5rem;
       text-align: center;
-      margin: 10px 0; }
+      width: 100%; }
+    section.recipe-list article:hover img {
+      transform: translate3d(0, -80px, 0); }
+    section.recipe-list article:hover h2 {
+      transform: translate3d(0, -100px, 0); }
+    section.recipe-list article:hover p {
+      opacity: 1;
+      transform: translate3d(0, 0, 0); }
 
 body.add-recipe .flex-container {
   display: flex;
@@ -238,5 +272,7 @@ body.add-recipe .flex-container {
 /*
   Pages specific
 */
+body.home #new {
+  margin-top: 50px; }
 
 /*# sourceMappingURL=main.css.map */

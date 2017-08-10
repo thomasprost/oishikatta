@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block body_class %}home{% endblock %}
 
 {% block body %}
     <section id="home-top"></section>
@@ -7,17 +8,33 @@
             <section class="recipe-list">
                 <article>
                     <img src="http://via.placeholder.com/350x300" alt="">
-                    <h3>Galette des rois</h3>
+                    <div class="caption">
+                        <h2>Thoughtful Goliath</h2>
+                        <p>When Goliath comes out, you should run.</p>
+                        <a href="#">View more</a>
+                    </div>
                 </article>
-                <article>
-                    <img src="http://via.placeholder.com/350x300" alt="">
-                    <h3>Crumble aux pommes</h3>
-                </article>
-                <article>
-                    <img src="http://via.placeholder.com/350x300" alt="">
-                    <h3>Pad thai</h3>
-                </article>
-                <article></article>
+                {% if recipes %}
+                    {% for r in recipes %}
+                        <article>
+                            <img src="{{ asset('uploads/images/recipes/'~ r.mainImage ~'') }}" alt="{{ r.name }}">
+                            <div class="caption">
+                                <h2>{{ r.name }}</h2>
+                                <p>Japan</p>
+                                <a href="{{ path('recipe_show', {'slug': r.slug}) }}">View more</a>
+                            </div>
+                        </article>
+
+                    {% endfor %}
+                {% endif %}
+
+                {#<article>#}
+                    {#<img src="http://via.placeholder.com/350x300" alt="">#}
+                {#</article>#}
+                {#<article>#}
+                    {#<img src="http://via.placeholder.com/350x300" alt="">#}
+                {#</article>#}
+                {#<article></article>#}
             </section>
         </div>
     </section>

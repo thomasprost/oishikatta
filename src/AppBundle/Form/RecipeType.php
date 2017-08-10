@@ -21,6 +21,7 @@ class RecipeType extends AbstractType
             ->add('numberPeople')
             ->add('minutes')
             ->add('link')
+            ->add('countries')
             ->add('save', SubmitType::class)
         ;
     }
