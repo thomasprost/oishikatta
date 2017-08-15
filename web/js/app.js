@@ -1,3 +1,7 @@
+import log from './log.js'
+
+log('yo mec')
+
 var OISHI =  (function () {
     'use strict';
 

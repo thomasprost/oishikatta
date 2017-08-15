@@ -1,0 +1,29 @@
+{
+  "name": "oishikatta",
+  "version": "1.0.0",
+  "description": "Symfony Standard Edition ========================",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasprost/oishikatta.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomasprost/oishikatta/issues"
+  },
+  "homepage": "https://github.com/thomasprost/oishikatta#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "webpack": "^3.5.4"
+  }
+}
