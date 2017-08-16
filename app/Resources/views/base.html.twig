@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{ asset('scss/main.css') }}"  />
+        {% if app.environment == 'dev' %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('dist/main.css') }}"  />
+        {% endif %}
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -16,7 +18,7 @@
                     <ul>
                         <li><a href="{{ path('recipe_home') }}">Latest Recipes</a></li>
                         <li><a href="{{ path('recipe_add') }}">Add New</a></li>
-                        <li><a href="#">Ingredients</a></li>
+                        <li><a href="#">Find by </a></li>
                     </ul>
                 </nav>
             </div>

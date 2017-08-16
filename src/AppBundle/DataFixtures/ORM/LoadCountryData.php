@@ -1,12 +1,11 @@
 <?php
 namespace AppBundle\DataFixtures\ORM;
 
-
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Country;
 
-class LoadRecipeData implements FixtureInterface
+class LoadCountryData implements FixtureInterface
 {
 
     /**

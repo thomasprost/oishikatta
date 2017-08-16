@@ -6,12 +6,12 @@ section.recipe-list{
     flex-basis: 30%;
     //border: 2px solid $light__blue;
     //border-radius: 4px;
-    min-height: 300px;
+    height: 200px;
     margin-bottom: 50px;
 
     position: relative;
     overflow: hidden;
-    height: auto;
+
     background: #3085a3;
     text-align: center;
     cursor: pointer;
@@ -82,16 +82,7 @@ section.recipe-list{
 }
 
 
-body.add-recipe
+body.add-recipe, body.edit-recipe
 {
-  .flex-container{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 20px;
 
-    .half-width{
-      width: 45%;
-    }
-  }
 }

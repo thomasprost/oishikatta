@@ -1,10 +1,33 @@
 {% extends 'base.html.twig' %}
+{% block body_class %}edit-recipe{% endblock %}
 
 {% block body %}
+    <div class="recipe-header">
+        <h1>Edit {{ recipe.name }}</h1>
+        <div class="header-bg" style="background-image:url({{ asset('images/backgrounds/raspberry-cheesecake-with-grand-marnier.jpg') }})"></div>
+    </div>
     <div class="container">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_start(form, {'attr': {'class': 'flex-container'}}) }}
+        <div class="half-width">
+            <h3>Prototype</h3>
+
+            {{ form_row(form.name) }}
+            {{ form_row(form.intro) }}
+            {{ form_row(form.numberPeople) }}
+            {{ form_row(form.minutes) }}
+            {{ form_row(form.link) }}
+
+        </div>
+        <div class="half-width">
+            <h3>Illustrate</h3>
+            <img class="entity-img" src="{{ asset('uploads/images/recipes/'~ recipe.mainImage ~'') }}" alt="{{ recipe.name }}">
+            {{ form_row(form.mainImageFile) }}
+
+            <h3>Define</h3>
+            {{ form_row(form.countries) }}
+        </div>
         {{ form_end(form) }}
+
     </div>
 
 {% endblock %}

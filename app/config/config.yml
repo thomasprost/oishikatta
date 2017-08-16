@@ -91,3 +91,4 @@ vich_uploader:
             uri_prefix:         '%app.path.recipe_images%'
             upload_destination: '%kernel.root_dir%/../web/uploads/images/recipes'
             namer:              vich_uploader.namer_origname
+            inject_on_load:     true

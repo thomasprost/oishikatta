@@ -17,7 +17,12 @@ class RecipeType extends AbstractType
         $builder
             ->add('name')
             ->add('intro')
-            ->add('mainImageFile', FileType::class)
+            ->add('mainImageFile', VichFileType::class, array(
+                'attr' => array(
+                    'class' => 'upload-image'
+                ),
+                'required' => false
+            ) )
             ->add('numberPeople')
             ->add('minutes')
             ->add('link')

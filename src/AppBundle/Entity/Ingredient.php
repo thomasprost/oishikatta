@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Ingredient
@@ -13,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Ingredient
 {
+    use ORMBehaviors\Timestampable\Timestampable;
+
     /**
      * @var int
      *
@@ -32,9 +35,23 @@ class Ingredient
     /**
      * @var string
      *
+     * @ORM\Column(name="nameJa", type="string", length=191, unique=true)
+     */
+    private $nameJa;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="parent", type="integer", nullable=true)
+     */
+    private $parent;
 
     /**
      * Recipes with this ingredient.
@@ -94,6 +111,30 @@ class Ingredient
     }
 
     /**
+     * Set nameJa
+     *
+     * @param string $nameJa
+     *
+     * @return Ingredient
+     */
+    public function setNameJa($nameJa)
+    {
+        $this->nameJa = $nameJa;
+
+        return $this;
+    }
+
+    /**
+     * Get nameJa
+     *
+     * @return string
+     */
+    public function getNameJa()
+    {
+        return $this->nameJa;
+    }
+
+    /**
      * Set image
      *
      * @param string $image
@@ -116,6 +157,31 @@ class Ingredient
     {
         return $this->image;
     }
+
+    /**
+     * Set parent
+     *
+     * @param string $parent
+     *
+     * @return Ingredient
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return string
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
     //endregion
 
     //region Recipe Methods

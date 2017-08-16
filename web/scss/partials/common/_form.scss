@@ -7,6 +7,7 @@ label{
 input, textarea, select {
   padding: 5px 10px;
   width: 100%;
+  max-width: 100%;
   border: $light__blue 2px solid;
   height: 40px;
   outline : none;
@@ -15,6 +16,10 @@ input, textarea, select {
   &:focus{
     border-color: $dark__blue;
   }
+}
+
+textarea{
+  min-height: 150px;
 }
 
 input[type='submit'], button{
@@ -59,4 +64,41 @@ input[type='submit'], button{
       transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     }
   }
+}
+
+
+
+input[type="checkbox"]{
+  width: 25px;
+}
+
+form.flex-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
+  .half-width{
+    width: 45%;
+  }
+
+  .entity-img{
+    max-height: 200px;
+  }
+
+  .upload-image{
+    > div {
+      width: 50%;
+      padding-right: 20px;
+      float: left;
+    }
+
+    &:after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+  }
+
+  
 }

@@ -1,0 +1,19 @@
+.info-list{
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  article{
+    width: 10%;
+    margin: 0 1% 50px 1%;
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+
+    h4{
+      margin: 5px 0;
+    }
+  }
+}

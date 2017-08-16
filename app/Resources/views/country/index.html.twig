@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="recipe-header">
+        <h1>All Countries</h1>
+        <div class="header-bg" style="background-image:url({{ asset('images/backgrounds/sunsetbegan.jpg') }})"></div>
+    </div>
+    <div class="container">
+        <section class="info-list">
+            {% if countries %}
+                {% for c in countries %}
+                    <article>
+                        <img src="{{ asset('images/country/flags/'~ c.flagImage ~'') }}" alt="{{ c.name }}">
+                        <h4>{{ c.name }}</h4>
+                        <h4>{{ c.nameJa }}</h4>
+                    </article>
+                {% endfor %}
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}
