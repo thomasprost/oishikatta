@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recipe;
 use AppBundle\Form\RecipeType;
+use Doctrine\Common\Collections\Collection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,11 +36,15 @@ class RecipeController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $recipe = $form->getData();
+//            $recipe = $form->getData();
+            $recInc = $recipe->getRecipeIngredients();
+            foreach ($recInc as $rec){
+                $rec->setRecipe($recipe);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($recipe);
             $em->flush();
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('recipe_home');
         }
 
         return $this->render('recipe/add.html.twig', array(

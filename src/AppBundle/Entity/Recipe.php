@@ -93,32 +93,24 @@ class Recipe
 
 
     /**
-     * List of ingredients for the recipe
-     * (Owning side).
-     *
-     * @var Ingredient[]
-     * @ORM\ManyToMany(targetEntity="Ingredient", inversedBy="recipes")
-     * @ORM\JoinTable(name="recipe_ingredients")
+     * @ORM\OneToMany(targetEntity="RecipeIngredient", mappedBy="recipe", cascade={"persist", "remove"}, orphanRemoval=TRUE)
      */
-    private $ingredients;
+    private $recipeIngredients;
 
 
     /**
-     * List of countries for the recipe
-     * (Owning side).
+     * Country for the recipe
      *
-     * @var Country[]
-     * @ORM\ManyToMany(targetEntity="Country", inversedBy="recipes")
-     * @ORM\JoinTable(name="recipe_countries")
+     * @var Country
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="recipes")
      */
-    private $countries;
+    private $country;
 
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
-        $this->ingredients = new ArrayCollection();
-        $this->countries = new ArrayCollection();
+        $this->recipeIngredients = new ArrayCollection();
     }
 
     /**
@@ -363,109 +355,64 @@ class Recipe
     }
     //endregion
 
-    //region Ingredient Methods
-    /**
-     * Get all associated ingredients.
-     *
-     * @return Ingredient[]
-     */
+
+
+    public function getRecipeIngredients()
+    {
+        return $this->recipeIngredients->toArray();
+    }
+
+    public function addRecipeIngredient(RecipeIngredient $recipeIngredient)
+    {
+        if (!$this->recipeIngredients->contains($recipeIngredient)) {
+            $this->recipeIngredients->add($recipeIngredient);
+        }
+
+        return $this;
+    }
+
+    public function removeRecipeIngredient(RecipeIngredient $recipeIngredient)
+    {
+        if ($this->recipeIngredients->contains($recipeIngredient)) {
+            $this->recipeIngredients->removeElement($recipeIngredient);
+        }
+
+        return $this;
+    }
+
     public function getIngredients()
     {
-        return $this->ingredients;
+        return array_map(
+            function ($recipeIngredient) {
+                return $recipeIngredient->getIngredient();
+            },
+            $this->recipeIngredients->toArray()
+        );
     }
 
     /**
-     * Set all ingredients of the recipe.
+     * Set country
      *
-     * @param ingredient[] $ingredients
-     */
-    public function setIngredients($ingredients)
-    {
-        // This is the owning side, we have to call remove and add to have change in the ingredient side too.
-        foreach ($this->getIngredients() as $ingredient) {
-            $this->removeIngredient($ingredient);
-        }
-        foreach ($ingredients as $ingredient) {
-            $this->addIngredient($ingredient);
-        }
-    }
-
-    /**
-     * Add ingredient
-     *
-     * @param Ingredient $ingredient
+     * @param \AppBundle\Entity\Country $country
      *
      * @return Recipe
      */
-    public function addIngredient(Ingredient $ingredient)
+    public function setCountry(Country $country = null)
     {
-        $this->ingredients[] = $ingredient;
+        $this->country = $country;
 
         return $this;
     }
 
     /**
-     * Remove ingredient
+     * Get Country
      *
-     * @param ingredient $ingredient
+     * @return \AppBundle\Entity\Country
      */
-    public function removeIngredient(Ingredient $ingredient)
+    public function getCountry()
     {
-        $this->ingredients->removeElement($ingredient);
+        return $this->country;
     }
-    //endregion
-
-    //region Country Methods
-    /**
-     * Get all associated countries.
-     *
-     * @return Country[]
-     */
-    public function getCountries()
-    {
-        return $this->countries;
-    }
-
-    /**
-     * Set all countries of the recipe.
-     *
-     * @param Country[] $countries
-     */
-    public function setCountries($countries)
-    {
-        // This is the owning side, we have to call remove and add to have change in the country side too.
-        foreach ($this->getCountries() as $country) {
-            $this->removeCountry($country);
-        }
-        foreach ($countries as $country) {
-            $this->addCountry($country);
-        }
-    }
-
-    /**
-     * Add Country
-     *
-     * @param Country $country
-     *
-     * @return Recipe
-     */
-    public function addCountry(Country $country)
-    {
-        $this->countries[] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Remove Country
-     *
-     * @param Country $country
-     */
-    public function removeCountry(Country $country)
-    {
-        $this->countries->removeElement($country);
-    }
-    //endregion
 
     //region KNP Sluggable Override
     public function getSluggableFields()

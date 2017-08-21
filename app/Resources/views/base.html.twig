@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %} | Oishikatta </title>
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
         {% if app.environment == 'dev' %}
             <link rel="stylesheet" type="text/css" href="{{ asset('dist/main.css') }}"  />
@@ -28,6 +28,7 @@
 
         </footer>
 
+        <script src="https://unpkg.com/vue"></script>
         <script src="{{ asset('dist/bundle.js') }}" ></script>
         {% block javascripts %}{% endblock %}
     </body>

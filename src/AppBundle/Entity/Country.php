@@ -54,12 +54,9 @@ class Country
     private $flagImage;
 
     /**
-     * Recipes in the country.
-     *
-     * @var Recipe[]
-     * @ORM\ManyToMany(targetEntity="Recipe", mappedBy="countries")
-     **/
-    protected $recipes;
+     * @ORM\OneToMany(targetEntity="Recipe", mappedBy="country")
+     */
+    private $recipes;
 
     /**
      * Constructor
@@ -184,42 +181,6 @@ class Country
     }
 
     //region Recipe Methods
-    /**
-     * Set all recipes in the country.
-     *
-     * @param Recipe[] $recipes
-     */
-    public function setRecipes($recipes)
-    {
-        $this->recipes->clear();
-        $this->recipes = new ArrayCollection($recipes);
-    }
-
-    /**
-     * Add recipe in the country
-     *
-     * @param \AppBundle\Entity\Recipe $recipe
-     *
-     * @return Country
-     */
-    public function addRecipe($recipe)
-    {
-        if (!$this->recipes->contains($recipe)) {
-            $this->recipes[] = $recipe;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove recipe
-     *
-     * @param \AppBundle\Entity\recipe $recipe
-     */
-    public function removeRecipe(Recipe $recipe)
-    {
-        $this->recipes->removeElement($recipe);
-    }
 
     /**
      * Get Recipes

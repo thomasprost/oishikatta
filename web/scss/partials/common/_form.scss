@@ -87,6 +87,10 @@ form.flex-container{
   }
 
   .upload-image{
+    label{
+      display: none;
+    }
+
     > div {
       width: 50%;
       padding-right: 20px;

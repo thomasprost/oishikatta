@@ -54,19 +54,16 @@ class Ingredient
     private $parent;
 
     /**
-     * Recipes with this ingredient.
-     *
-     * @var Recipe[]
-     * @ORM\ManyToMany(targetEntity="Recipe", mappedBy="ingredients")
-     **/
-    protected $recipes;
+     * @ORM\OneToMany(targetEntity="RecipeIngredient", mappedBy="ingredient", cascade={"remove"})
+     */
+    protected $recipeIngredients;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->recipes = new ArrayCollection();
+        $this->recipeIngredients = new ArrayCollection();
     }
 
     /** {@inheritdoc} */
@@ -184,53 +181,38 @@ class Ingredient
 
     //endregion
 
-    //region Recipe Methods
-    /**
-     * Set all recipes in the country.
-     *
-     * @param Recipe[] $recipes
-     */
-    public function setRecipes($recipes)
+    public function getRecipeIngredients()
     {
-        $this->recipes->clear();
-        $this->recipes = new ArrayCollection($recipes);
+        return $this->recipeIngredients->toArray();
     }
 
-    /**
-     * Add recipe for this ingredient
-     *
-     * @param \AppBundle\Entity\Recipe $recipe
-     *
-     * @return Ingredient
-     */
-    public function addRecipe($recipe)
+    public function addRecipeIngredient(RecipeIngredient $recipeIngredient)
     {
-        if (!$this->recipes->contains($recipe)) {
-            $this->recipes[] = $recipe;
+        if (!$this->recipeIngredients->contains($recipeIngredient)) {
+            $this->recipeIngredients->add($recipeIngredient);
         }
 
         return $this;
     }
 
-    /**
-     * Remove recipe
-     *
-     * @param \AppBundle\Entity\recipe $recipe
-     */
-    public function removeRecipe(Recipe $recipe)
+    public function removeRecipeIngredient(RecipeIngredient $recipeIngredient)
     {
-        $this->recipes->removeElement($recipe);
+        if ($this->recipeIngredients->contains($recipeIngredient)) {
+            $this->recipeIngredients->removeElement($recipeIngredient);
+        }
+
+        return $this;
     }
 
-    /**
-     * Get Recipes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRecipes()
+    public function getRecipe()
     {
-        return $this->recipes;
+        return array_map(
+            function ($recipientIngredient) {
+                return $recipientIngredient->getRecipe();
+            },
+            $this->recipeIngredients->toArray()
+        );
     }
-    //endregion
+
 }
 

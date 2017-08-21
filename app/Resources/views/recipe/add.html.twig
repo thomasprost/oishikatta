@@ -1,31 +1,50 @@
 {% extends 'base.html.twig' %}
 {% block body_class %}add-recipe{% endblock %}
+{% block title %}Add a recipe{% endblock %}
 
 {% block body %}
-    <div class="recipe-header">
-        <h1>Add a new recipe</h1>
-        <div class="header-bg" style="background-image:url({{ asset('images/backgrounds/raspberry-cheesecake-with-grand-marnier.jpg') }})"></div>
-    </div>
-    <div class="container">
-            {{ form_start(form, {'attr': {'class': 'flex-container'}}) }}
-            <div class="half-width">
-                <h3>Prototype</h3>
+    <div id="app">
+        <div class="recipe-header">
+            {% verbatim %}
+                <h1>Add a recipe <br />
+                    {{ recipeTitle }}
+                </h1>
+            {% endverbatim %}
+            <div class="header-bg" style="background-image:url({{ asset('images/backgrounds/raspberry-cheesecake-with-grand-marnier.jpg') }})"></div>
+        </div>
+        <div class="container">
+                {{ form_start(form, {'attr': {'class': 'flex-container'}}) }}
+                <div class="half-width">
+                    <h3>Prototype</h3>
+                    {{ form_row(form.name, {'attr': {'v-model': 'recipeTitle'}}) }}
+                    {{ form_row(form.intro) }}
+                    {{ form_row(form.numberPeople) }}
+                    {{ form_row(form.minutes) }}
+                    {{ form_row(form.link) }}
 
-                {{ form_row(form.name) }}
-                {{ form_row(form.intro) }}
-                {{ form_row(form.numberPeople) }}
-                {{ form_row(form.minutes) }}
-                {{ form_row(form.link) }}
+                </div>
+                <div class="half-width">
+                    <h3>Illustrate</h3>
+                    {{ form_row(form.mainImageFile) }}
+                    <h3>Define</h3>
+                    {{ form_widget(form.country) }}
 
-            </div>
-            <div class="half-width">
-                <h3>Illustrate</h3>
-                {{ form_row(form.mainImageFile) }}
-                <h3>Define</h3>
-                {{ form_row(form.countries) }}
-            </div>
-            {{ form_end(form) }}
 
+                    <ul id="ingredients-fields-list"
+                        data-prototype="{{ form_widget(form.recipeIngredients.vars.prototype)|e }}">
+                        {% for ingField in form.recipeIngredients %}
+                            <li>
+                                {{ form_errors(ingField) }}
+                                {{ form_widget(ingField) }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <a href="#" id="add-another-el">Add another ingredient</a>
+
+                </div>
+                {{ form_end(form) }}
+        </div>
     </div>
 
 {% endblock %}
