@@ -3,7 +3,7 @@ section.recipe-list{
   justify-content: space-between;
   flex-wrap: wrap;
   article{
-    flex-basis: calc(100% / #{$recipe_row});
+    flex-basis: calc((100% / #{$recipe_row}) - 20px);
     //border: 2px solid $light__blue;
     //border-radius: 4px;
     height: 150px;

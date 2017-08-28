@@ -4,7 +4,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const dev = process.env.NODE_ENV === "dev";
 
 let cssLoaders = [
-            {loader: 'css-loader', options: { importLoaders: 1}}
+            {loader: 'css-loader', options: { importLoaders: 1, minimize: !dev}}
         ]
 
 if(!dev){
@@ -28,7 +28,7 @@ let config = {
         path: path.resolve('./web/dist'),
         filename: 'bundle.js'
     },
-    devtool: dev ? "cheap-module-eval-source-map" : "source-map",
+    devtool: dev ? "cheap-module-eval-source-map" : false,
     module: {
         rules: [
             {
@@ -56,7 +56,8 @@ let config = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192
+                            limit: 8192,
+                            name: 'images/[name].[hash:7].[ext]'
                         }
                     }
                 ]
@@ -66,14 +67,14 @@ let config = {
     plugins: [
         new ExtractTextPlugin({
             filename: '[name].css',
-            disable: dev
+            disable: false
         }),
     ]
 }
 
 if(!dev){
     config.plugins.push(new UglifyJSPlugin({
-        sourceMap: true
+        sourceMap: false
     }))
 }
 

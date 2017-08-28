@@ -4,26 +4,38 @@
         <meta charset="UTF-8" />
         <title>{% block title %}{% endblock %} | Oishikatta </title>
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-        {% if app.environment == 'dev' %}
-            <link rel="stylesheet" type="text/css" href="{{ asset('dist/main.css') }}"  />
-        {% endif %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('dist/main.css') }}"  />
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body class="{% block body_class %}{% endblock %}">
         <header>
-            <div class="container">
-                <a id="logo" href="{{ path('homepage') }}"></a>
-                <nav>
-                    <ul>
-                        <li><a href="{{ path('recipe_home') }}">Latest Recipes</a></li>
-                        <li><a href="{{ path('recipe_add') }}">Add New</a></li>
-                        <li><a href="#">Find by </a></li>
-                    </ul>
-                </nav>
-            </div>
+            {#<div class="container">#}
+
+                {#<nav>#}
+                    {#<ul>#}
+                        {#<li><a href="{{ path('recipe_home') }}">Latest Recipes</a></li>#}
+                        {#<li><a href="{{ path('recipe_add') }}">Add New</a></li>#}
+                        {#<li><a href="#">Find by </a></li>#}
+                    {#</ul>#}
+                {#</nav>#}
+            {#</div>#}
         </header>
-        {% block body %}{% endblock %}
+        <menu class="main-menu">
+            <a id="logo" href="{{ path('homepage') }}"></a>
+            <h2>oishikatta</h2>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('recipe_home') }}">Latest Recipes</a></li>
+                    <li><a href="{{ path('recipe_add') }}">Add New</a></li>
+                    <li><a href="#">Find by </a></li>
+                </ul>
+            </nav>
+        </menu>
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
+
         <footer>
 
         </footer>

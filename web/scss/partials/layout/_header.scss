@@ -1,32 +1,26 @@
 body > header {
   padding-top: 10px;
-  height: 60px;
-  background-color: #fff;
+  height: 150px;
+  padding-left: 250px;
+  background-color: transparent;
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  box-shadow: 1px 1px 5px 1px $dark__blue;
+  //position: fixed;
+  //top: 0;
+  //left: 0;
+  //z-index: 10;
+  box-shadow: none;
 
-  #logo{
-    float: left;
-    background-image: url('../images/logo.jpg');
-    background-size: cover;
-    height: 42px;
-    width: 54px;
-    display: block;
-  }
-  nav{
-    float: right;
-    padding-top: 12px;
-    ul
-    {
-      display: flex;
 
-      li{
-        margin: 0 10px;
-      }
-    }
-  }
+  //nav{
+  //  float: right;
+  //  padding-top: 12px;
+  //  ul
+  //  {
+  //    display: flex;
+  //
+  //    li{
+  //      margin: 0 10px;
+  //    }
+  //  }
+  //}
 }
