@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +42,18 @@ class RecipeStep
      * @ORM\Column(name="orderField", type="integer", nullable=true)
      */
     private $orderField;
+
+
+    /**
+     * @var Recipe $recipe
+     *
+     * @ORM\ManyToOne(targetEntity="Recipe", inversedBy="recipeSteps", cascade={"persist", "merge"})
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="recipe_id", referencedColumnName="id")
+     * })
+     */
+    private $recipe;
+
 
 
     /**
@@ -124,5 +137,22 @@ class RecipeStep
     {
         return $this->orderField;
     }
+
+    /**
+     * @param \AppBundle\Entity\Recipe $recipe
+     */
+    public function setRecipe(Recipe $recipe)
+    {
+        $this->recipe = $recipe;
+    }
+
+    /**
+     * @return Recipe $recipe
+     */
+    public function getRecipe()
+    {
+        return $this->recipe;
+    }
+
 }
 

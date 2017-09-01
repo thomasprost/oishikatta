@@ -74,12 +74,18 @@ input[type="checkbox"]{
 
 form.flex-container{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 20px;
+  padding: 0 20px;
 
   .half-width{
     width: 45%;
+  }
+
+  .full-width{
+    width: 95%;
+    margin: 20px 0;
   }
 
   .entity-img{
@@ -101,6 +107,33 @@ form.flex-container{
       content: '';
       clear: both;
       display: block;
+    }
+  }
+
+  .fluid-elements{
+    li{
+      position: relative;
+    }
+
+  }
+
+  .add-another-el{
+    display: block;
+    margin: 15px 0;
+  }
+
+  .del-another-el{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10px;
+    height: 10px;
+
+    &:after{
+      content: 'x';
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 

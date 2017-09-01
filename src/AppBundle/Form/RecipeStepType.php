@@ -1,29 +1,26 @@
 <?php
-// src/AppBundle/Form/RecipeIngredientType.php
+// src/AppBundle/Form/RecipeStepType.php
 namespace AppBundle\Form;
 
+use AppBundle\Entity\RecipeStep;
 use Symfony\Component\Form\AbstractType;
-use AppBundle\Entity\RecipeIngredient;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
-class RecipeIngredientType extends AbstractType
+class RecipeStepType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ingredient')
-            ->add('quantity')
+            ->add('instruction')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => RecipeIngredient::class,
+            'data_class' => RecipeStep::class,
         ));
     }
 }

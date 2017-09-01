@@ -22,38 +22,3 @@
   margin-left: 250px;
 }
 
-menu.main-menu{
-  width: 250px;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background-color: $blue__grey;
-  color: #fff;
-  text-align: center;
-
-  #logo{
-    background-image: url('../images/logo.png');
-    background-size: cover;
-    height: 72px;
-    margin: 20px auto 20px ;
-    width: 100px;
-    display: block;
-  }
-
-  h2{
-    text-transform: capitalize;
-    margin-bottom: 50px;
-  }
-
-  nav{
-    ul{
-      li{
-        margin-bottom: 10px;
-        text-align: left;
-        padding-left: 20px;
-
-      }
-    }
-  }
-}

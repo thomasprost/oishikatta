@@ -27,22 +27,43 @@
                     <h3>Illustrate</h3>
                     {{ form_row(form.mainImageFile) }}
                     <h3>Define</h3>
-                    {{ form_widget(form.country) }}
+                    <label>Country</label>
+                    {{ form_widget(form.country, {'attr': {'class': 'half-width'}}) }}
+
+                    <div id="ingredients" class="fluid-elements">
+                        <ul id="ingredients-fields-list"
+                            data-prototype="{{ form_widget(form.recipeIngredients.vars.prototype)|e }}">
+                            {% for ingField in form.recipeIngredients %}
+                                <li>
+                                    {{ form_errors(ingField) }}
+                                    {{ form_widget(ingField) }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                        <a href="#" class="add-another-el">Add ingredient</a>
+                    </div>
 
 
-                    <ul id="ingredients-fields-list"
-                        data-prototype="{{ form_widget(form.recipeIngredients.vars.prototype)|e }}">
-                        {% for ingField in form.recipeIngredients %}
-                            <li>
-                                {{ form_errors(ingField) }}
-                                {{ form_widget(ingField) }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-
-                    <a href="#" id="add-another-el">Add ingredient</a>
 
                 </div>
+                <div class="full-width">
+                    <h3>Explain</h3>
+                    <div id="steps" class="fluid-elements">
+                        <ul id="steps-fields-list"
+                            data-prototype="{{ form_widget(form.recipeSteps.vars.prototype)|e }}">
+                            {% for stepField in form.recipeSteps %}
+                                <li>
+                                    {{ form_errors(stepField) }}
+                                    {{ form_widget(stepField) }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                        <a href="#" class="add-another-el">Add Step</a>
+                    </div>
+                </div>
+                {{ form_widget(form.save) }}
                 {{ form_end(form) }}
         </div>
     </div>

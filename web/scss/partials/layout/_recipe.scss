@@ -1,20 +1,27 @@
 section.recipe-list{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   article{
-    flex-basis: calc((100% / #{$recipe_row}) - 20px);
-    //border: 2px solid $light__blue;
-    //border-radius: 4px;
-    height: 150px;
+    flex-basis: calc((100% / #{$recipe_row}) - #{$recipe_gutter});
+
     margin-bottom: 50px;
 
     position: relative;
     overflow: hidden;
 
-    background: #3085a3;
+    background: transparentize($blue__grey, .1);
     text-align: center;
     cursor: pointer;
+
+    .recipe-bg{
+      width: 100%;
+      padding-bottom: 75%;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+    }
 
     .caption, .caption > a {
       position: absolute;
@@ -32,13 +39,9 @@ section.recipe-list{
       opacity: 0;
     }
 
-    img{
-      width: 100%;
-      height: auto;
-      //margin-bottom: 20px;
-    }
 
-    img, h2 {
+
+    .recipe-bg, h2 {
       transition: transform 0.35s;
     }
 
@@ -46,13 +49,14 @@ section.recipe-list{
       position: absolute;
       bottom: 0;
       left: 0;
-      padding: 30px;
+      padding: 23px;
     }
 
     p {
       text-transform: none;
-      font-size: 90%;
+      font-size: 1.3rem;
       opacity: 0;
+      color: #fff;
       transition: opacity 0.35s, transform 0.35s;
       transform: translate3d(0,50px,0);
     }
@@ -64,12 +68,12 @@ section.recipe-list{
     }
 
     &:hover {
-      img {
-        transform: translate3d(0,-80px,0);
+      .recipe-bg {
+        transform: translate3d(0,-60px,0);
       }
 
       h2 {
-        transform: translate3d(0,-100px,0);
+        transform: translate3d(0,-80px,0);
       }
 
       p {
@@ -84,10 +88,6 @@ section.recipe-list{
 
 body.add-recipe, body.edit-recipe
 {
-  #add-another-el{
-    display: block;
-    margin: 15px 0;
-  }
 
   .ingredient-box{
     display: flex;

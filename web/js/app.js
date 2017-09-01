@@ -1,4 +1,4 @@
-import OISHI from './log.js'
+import OISHI from './oishi.js'
 
 // let app = new Vue({
 //     el: '#app',

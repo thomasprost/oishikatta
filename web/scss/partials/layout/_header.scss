@@ -4,23 +4,75 @@ body > header {
   padding-left: 250px;
   background-color: transparent;
   width: 100%;
-  //position: fixed;
-  //top: 0;
-  //left: 0;
-  //z-index: 10;
+
   box-shadow: none;
 
+}
 
-  //nav{
-  //  float: right;
-  //  padding-top: 12px;
-  //  ul
-  //  {
-  //    display: flex;
-  //
-  //    li{
-  //      margin: 0 10px;
-  //    }
-  //  }
-  //}
+menu#main-menu{
+  width: 250px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: $grey__blue;
+  color: #fff;
+  text-align: center;
+
+  #logo{
+    background-image: url('../images/logo.png');
+    background-size: cover;
+    height: 72px;
+    margin: 20px auto 20px ;
+    width: 100px;
+    display: block;
+  }
+
+  h2{
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    overflow: hidden;
+    height: 17px;
+
+    span{
+      position: relative;
+      display: inline-block;
+      transition: transform 0.3s;
+      height: 17px;
+
+      i{
+        position: absolute;
+        top: 3px;
+        height: 17px;
+        left: -3px;
+        transition: transform 0.3s;
+      }
+
+      i#name-main{
+
+        transform: rotateX(0deg) translateZ(-25px);
+      }
+
+      i#name-before{
+        transform: rotateX(-120deg) translateZ(-25px);
+      }
+
+      i#name-after{
+        transform: rotateX(120deg) translateZ(-25px);
+      }
+    }
+
+
+  }
+
+  nav{
+    ul{
+      li{
+        margin-bottom: 10px;
+        text-align: left;
+        padding-left: 20px;
+
+      }
+    }
+  }
 }

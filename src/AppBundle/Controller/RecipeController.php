@@ -41,6 +41,12 @@ class RecipeController extends Controller
             foreach ($recInc as $rec){
                 $rec->setRecipe($recipe);
             }
+
+            $recSteps = $recipe->getRecipeSteps();
+            foreach ($recSteps as $step){
+                $step->setRecipe($recipe);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($recipe);
             $em->flush();

@@ -21,9 +21,15 @@
                 {#</nav>#}
             {#</div>#}
         </header>
-        <menu class="main-menu">
+        <menu id="main-menu">
             <a id="logo" href="{{ path('homepage') }}"></a>
-            <h2>oishikatta</h2>
+            <h2>oishi
+                <span id="site-name">
+                    <i id="name-before">sou</i>
+                    <i id="name-main">katta</i>
+                    <i id="name-after">i</i>
+                </span>
+            </h2>
             <nav>
                 <ul>
                     <li><a href="{{ path('recipe_home') }}">Latest Recipes</a></li>

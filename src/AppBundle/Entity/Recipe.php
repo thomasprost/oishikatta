@@ -106,11 +106,19 @@ class Recipe
      */
     private $country;
 
+    /**
+     * @var ArrayCollection $recipeSteps
+     *
+     * @ORM\OneToMany(targetEntity="RecipeStep", mappedBy="recipe", cascade={"persist", "remove", "merge"})
+     */
+    private $recipeSteps;
+
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->recipeIngredients = new ArrayCollection();
+        $this->recipeSteps = new ArrayCollection();
     }
 
     /**
@@ -120,7 +128,6 @@ class Recipe
     {
         return $this->getName();
     }
-
 
     //region Accessors
     /**
@@ -303,6 +310,7 @@ class Recipe
     }
     //endregion
 
+    //region Methods
     //region Category Methods
     /**
      * Get all associated categories.
@@ -355,8 +363,7 @@ class Recipe
     }
     //endregion
 
-
-
+    //region Ingredients Methods
     public function getRecipeIngredients()
     {
         return $this->recipeIngredients->toArray();
@@ -389,7 +396,34 @@ class Recipe
             $this->recipeIngredients->toArray()
         );
     }
+    //endregion
 
+    //region Steps Methods
+    public function getRecipeSteps()
+    {
+        return $this->recipeSteps->toArray();
+    }
+
+    public function addRecipeStep(RecipeStep $recipeStep)
+    {
+        if (!$this->recipeSteps->contains($recipeStep)) {
+            $this->recipeSteps->add($recipeStep);
+        }
+
+        return $this;
+    }
+
+    public function removeRecipeStep(RecipeIngredient $recipeStep)
+    {
+        if ($this->recipeSteps->contains($recipeStep)) {
+            $this->recipeSteps->removeElement($recipeStep);
+        }
+
+        return $this;
+    }
+    //endregion
+
+    //region Country Methods
     /**
      * Set country
      *
@@ -413,6 +447,8 @@ class Recipe
     {
         return $this->country;
     }
+    //endregion
+    //endregion
 
     //region KNP Sluggable Override
     public function getSluggableFields()

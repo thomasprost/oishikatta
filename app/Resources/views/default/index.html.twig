@@ -1,40 +1,26 @@
 {% extends 'base.html.twig' %}
+{% block title %}Home{% endblock %}
 {% block body_class %}home{% endblock %}
+
 
 {% block body %}
     <section id="home-top"></section>
     <section id="new">
         <div class="container">
             <section class="recipe-list">
-                <article>
-                    <img src="http://via.placeholder.com/350x300" alt="">
-                    <div class="caption">
-                        <h2>Thoughtful Goliath</h2>
-                        <p>When Goliath comes out, you should run.</p>
-                        <a href="#">View more</a>
-                    </div>
-                </article>
                 {% if recipes %}
                     {% for r in recipes %}
                         <article>
-                            <img src="{{ asset('uploads/images/recipes/'~ r.mainImage ~'') }}" alt="{{ r.name }}">
+                            <div class="recipe-bg" style="background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }})"></div>
                             <div class="caption">
                                 <h2>{{ r.name }}</h2>
-                                <p>Japan</p>
+                                <p>{{ r.country }}</p>
                                 <a href="{{ path('recipe_show', {'slug': r.slug}) }}">View more</a>
                             </div>
                         </article>
 
                     {% endfor %}
                 {% endif %}
-
-                {#<article>#}
-                    {#<img src="http://via.placeholder.com/350x300" alt="">#}
-                {#</article>#}
-                {#<article>#}
-                    {#<img src="http://via.placeholder.com/350x300" alt="">#}
-                {#</article>#}
-                {#<article></article>#}
             </section>
         </div>
     </section>

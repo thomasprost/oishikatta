@@ -7,9 +7,11 @@ $dark__blue       :       #1076BA;
 $light__blue      :       #89D5F6;
 $mid__blue        :       #5BA3D3;
 $dark__grey       :       #2a2b30;
-$blue__grey       :       rgb(47, 63, 70);
-
+$grey__blue      :       rgb(47, 63, 70);
+$blue__grey       :       #103871;
+//
 
 /** Layout **/
 
-$recipe_row       :       4;
+$recipe_row       :       3;
+$recipe_gutter    :       20px;

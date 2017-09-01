@@ -6,9 +6,14 @@
             {% if recipes %}
                 {% for r in recipes %}
                     <article>
-                        <img src="{{ asset('uploads/images/recipes/'~ r.mainImage ~'') }}" alt="{{ r.name }}">
-                        <h3>{{ r.name }}</h3>
+                        <div class="recipe-bg" style="background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }})"></div>
+                        <div class="caption">
+                            <h2>{{ r.name }}</h2>
+                            <p>{{ r.country }}</p>
+                            <a href="{{ path('recipe_show', {'slug': r.slug}) }}">View more</a>
+                        </div>
                     </article>
+
                 {% endfor %}
             {% endif %}
         </section>
