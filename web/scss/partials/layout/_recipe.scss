@@ -99,3 +99,43 @@ body.add-recipe, body.edit-recipe
     }
   }
 }
+
+body.show-recipe{
+  .recipe-wrapper{
+    padding: 0 20px;
+
+    h2{
+      margin-bottom: 20px;
+      font-size: 3rem;
+    }
+
+    #recipe-img{
+      max-width: 50%;
+      width: 400px;
+      height: auto;
+      float: left;
+    }
+
+    .recipe-top-info{
+      float: left;
+      width: 50%;
+      padding-left: 20px;
+
+      p{
+        margin: 20px 0;
+      }
+    }
+
+    #steps{
+      padding-top: 20px;
+      clear: both;
+      width: 75%;
+      overflow: hidden;
+
+      p{
+        width: 100%;
+        margin: 20px 0;
+      }
+    }
+  }
+}
