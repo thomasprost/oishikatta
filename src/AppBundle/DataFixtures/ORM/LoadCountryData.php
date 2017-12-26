@@ -41,8 +41,8 @@ class LoadCountryData implements FixtureInterface
             $countryDb->setNameJa($country[0]);
             $countryDb->setFlagImage($country[1]);
 
-            $manager->persist($countryDb);
-            $manager->flush();
+//            $manager->persist($countryDb);
+//            $manager->flush();
         }
 
     }

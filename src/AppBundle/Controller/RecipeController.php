@@ -75,14 +75,16 @@ class RecipeController extends Controller
     }
 
     /**
-     * @Route("/recipe/edit/{id}", name="recipe_edit")
+     * @Route("/recipe/edit/{slug}", name="recipe_edit")
      */
-    public function editRecipeAction($id, Request $request)
+    public function editRecipeAction($slug, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Recipe::class);
 
-        $recipe = $repository->find($id);
+        $recipe = $repository->findOneBy(array(
+            'slug' => $slug
+        ));
         if (!$recipe)
             throw $this->createNotFoundException('No recipe found for id '.$id);
 

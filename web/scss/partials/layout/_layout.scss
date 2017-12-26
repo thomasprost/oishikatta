@@ -1,3 +1,7 @@
+.blue-text{
+  color: $dark__blue;
+}
+
 .info-list{
   margin-top: 40px;
   display: flex;
@@ -20,5 +24,92 @@
 
 .content{
   margin-left: 250px;
+}
+
+section.general-list{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  article{
+    flex-basis: calc((100% / var(--recipe-row)) - #{$recipe_gutter});
+
+    margin-bottom: 50px;
+
+    position: relative;
+    overflow: hidden;
+
+    background: transparentize($blue__grey, .1);
+    text-align: center;
+    cursor: pointer;
+
+    .recipe-bg{
+      width: 100%;
+      padding-bottom: 75%;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+    }
+
+    .caption, .caption > a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    a {
+      z-index: 1000;
+      text-indent: 200%;
+      white-space: nowrap;
+      font-size: 0;
+      opacity: 0;
+    }
+
+
+
+    .recipe-bg, h2 {
+      transition: transform 0.35s;
+    }
+
+    h2, p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 23px;
+    }
+
+    p {
+      text-transform: none;
+      font-size: 1.3rem;
+      opacity: 0;
+      color: #fff;
+      transition: opacity 0.35s, transform 0.35s;
+      transform: translate3d(0,50px,0);
+    }
+
+    h2{
+      font-size: 2.5rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    &:hover {
+      .recipe-bg {
+        transform: translate3d(0,-60px,0);
+      }
+
+      h2 {
+        transform: translate3d(0,-80px,0);
+      }
+
+      p {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+      }
+    }
+
+  }
 }
 

@@ -12,6 +12,12 @@ $blue__grey       :       #103871;
 //
 
 /** Layout **/
+body{
+  --recipe-row       :       3;
 
-$recipe_row       :       3;
+  &.ingredient{
+    --recipe-row     :       5;
+  }
+}
+
 $recipe_gutter    :       20px;

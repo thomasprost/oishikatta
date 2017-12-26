@@ -5,12 +5,15 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Ingredient
  *
  * @ORM\Table(name="ingredient")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\IngredientRepository")
+ * @Vich\Uploadable
  */
 class Ingredient
 {
@@ -35,9 +38,18 @@ class Ingredient
     /**
      * @var string
      *
-     * @ORM\Column(name="nameJa", type="string", length=191, unique=true)
+     * @ORM\Column(name="nameJa", type="string", length=191, unique=true, nullable=true)
      */
     private $nameJa;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="ingredient_images", fileNameProperty="image")
+     *
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @var string
@@ -132,6 +144,31 @@ class Ingredient
     }
 
     /**
+     * @param File $image
+     */
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
      * Set image
      *
      * @param string $image
@@ -212,6 +249,10 @@ class Ingredient
             },
             $this->recipeIngredients->toArray()
         );
+    }
+
+    public function isParent(){
+        return $this->getParent() == 0;
     }
 
 }

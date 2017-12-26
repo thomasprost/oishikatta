@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: en
     app.path.recipe_images: /uploads/images/recipes
+    app.path.ingredient_images: /uploads/images/ingredients
 
 framework:
     #esi: ~
@@ -90,5 +91,10 @@ vich_uploader:
         recipe_images:
             uri_prefix:         '%app.path.recipe_images%'
             upload_destination: '%kernel.root_dir%/../web/uploads/images/recipes'
+            namer:              vich_uploader.namer_origname
+            inject_on_load:     true
+        ingredient_images:
+            uri_prefix:         '%app.path.ingredient_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/ingredients'
             namer:              vich_uploader.namer_origname
             inject_on_load:     true
