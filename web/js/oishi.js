@@ -42,20 +42,33 @@ let OISHI =  (function () {
 
     }
 
-    let app = new Vue({
-        el: '#app',
-        data: {
-            recipeTitle: "",
-            seen: true
-        },
-        methods: {
-            hide : function (e) {
-                e.preventDefault()
-                this.seen = !this.seen
+    // If we can find the app element, setup Vuejs
+    if(document.querySelector('#app')){
+        let app = new Vue({
+            el: '#app',
+            data: {
+                recipeTitle: "",
+                seen: true
+            },
+            methods: {
+                hide : function (e) {
+                    e.preventDefault()
+                    this.seen = !this.seen
+                }
             }
-        }
 
-    })
+        })
+    }
+
+    let toggleSearch = function () {
+        const searchInput = document.querySelector('#search-input')
+        searchInput.addEventListener('click', function (e) {
+            e.preventDefault()
+            let searchParent = document.querySelector('.search')
+            searchParent.classList.toggle('search--open')
+        }, false)
+    }
+
 
     let init = function () {
         if(document.body.classList.contains('add-recipe')){
@@ -63,6 +76,7 @@ let OISHI =  (function () {
         }
 
         rotateText();
+        toggleSearch();
     };
 
     return {

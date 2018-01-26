@@ -26,11 +26,11 @@ class RecipeIngredient
      */
     protected $recipe;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Ingredient", inversedBy="recipeIngredients")
-     * @ORM\JoinColumn(name="ingredient_id", referencedColumnName="id", nullable=FALSE)
-     */
-    protected $ingredient;
+//    /**
+//     * @ORM\ManyToOne(targetEntity="Ingredient", inversedBy="recipeIngredients")
+//     * @ORM\JoinColumn(name="ingredient_id", referencedColumnName="id", nullable=FALSE)
+//     */
+//    protected $ingredient;
 
     /**
      * @var string
@@ -38,6 +38,14 @@ class RecipeIngredient
      * @ORM\Column(name="quantity", type="string", length=255)
      */
     protected $quantity;
+
+    /**
+     * @var string
+     * For now, just using a simple text to add ingredients. Easier to manage for now than a many to many link. Will fix it
+     * TODO : put back the ingredients
+     * @ORM\Column(name="ingredient_name", type="string", length=255)
+     */
+    protected $ingredientName;
 
 
     public function getId()
@@ -69,24 +77,24 @@ class RecipeIngredient
         $this->setRecipe($recipe);
     }
 
-    public function getIngredient()
-    {
-        return $this->ingredient;
-    }
-
-    public function setIngredient(Ingredient $ingredient = null)
-    {
-        if ($this->ingredient !== null) {
-            $this->ingredient->removeRecipeIngredient($this);
-        }
-
-        if ($ingredient !== null) {
-            $ingredient->addRecipeIngredient($this);
-        }
-
-        $this->ingredient = $ingredient;
-        return $this;
-    }
+//    public function getIngredient()
+//    {
+//        return $this->ingredient;
+//    }
+//
+//    public function setIngredient(Ingredient $ingredient = null)
+//    {
+//        if ($this->ingredient !== null) {
+//            $this->ingredient->removeRecipeIngredient($this);
+//        }
+//
+//        if ($ingredient !== null) {
+//            $ingredient->addRecipeIngredient($this);
+//        }
+//
+//        $this->ingredient = $ingredient;
+//        return $this;
+//    }
 
     public function getQuantity()
     {
@@ -96,6 +104,17 @@ class RecipeIngredient
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+        return $this;
+    }
+
+    public function getIngredientName()
+    {
+        return $this->ingredientName;
+    }
+
+    public function setIngredientName($ingredientName)
+    {
+        $this->ingredientName = $ingredientName;
         return $this;
     }
 }

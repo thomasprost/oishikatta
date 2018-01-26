@@ -13,9 +13,14 @@
                         <article>
                             <div class="recipe-bg" style="background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }})"></div>
                             <div class="caption">
-                                <h2>{{ r.name }}</h2>
-                                <p>{{ r.country }}</p>
-                                <a href="{{ path('recipe_show', {'slug': r.slug}) }}">View more</a>
+                                <h2>{{ r['name'] }}</h2>
+                                <p>
+                                    {% if r['country'] is not null %}
+                                        {{ r['country'].name }} -
+                                    {% endif %}
+                                    {{ r['createdAt']|date('M Y') }}
+                                </p>
+                                <a href="{{ path('recipe_show', {'slug': r['slug']}) }}">View more</a>
                             </div>
                         </article>
 

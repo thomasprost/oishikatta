@@ -251,6 +251,7 @@ class Ingredient
         );
     }
 
+
     public function isParent(){
         return $this->getParent() == 0;
     }

@@ -38,7 +38,7 @@
                             {% if recipe.recipeIngredients %}
                                 {% for i in recipe.recipeIngredients %}
                                     <li>
-                                        <div class="ing-name">{{ i.getIngredient.name }}</div>
+                                        <div class="ing-name">{{ i.ingredientName }}</div>
                                         <div class="ing-quantity"> {{ i.quantity }}</div>
                                     </li>
                                 {% endfor %}

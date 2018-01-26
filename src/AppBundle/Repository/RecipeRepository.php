@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class RecipeRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getLatestRecipes(){
+        return $this->createQueryBuilder('r')
+            ->select('r, c')
+            ->leftJoin('r.country', 'c')
+            ->orderBy('r.createdAt', 'DESC')
+            ->getQuery()->getArrayResult();
+    }
 }

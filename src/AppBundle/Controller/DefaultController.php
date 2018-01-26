@@ -16,7 +16,7 @@ class DefaultController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(Recipe::class);
 
-        $recipes = $repository->findAll();
+        $recipes = $repository->getLatestRecipes();
 
 
         return $this->render('default/index.html.twig', array(

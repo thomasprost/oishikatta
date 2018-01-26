@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Ingredient;
 use \Doctrine\ORM\EntityRepository;
 
 /**
@@ -35,5 +36,20 @@ class IngredientRepository extends EntityRepository
             ->orderBy('i.name', 'ASC')
             ->getQuery()->getResult();
     }
+
+//    public function getIngredientsByParents()
+//    {
+//        $allIngredients = $this->findAll();
+//        $orderedIngredients = array();
+//        /* @var $ing Ingredient */
+//        foreach ($allIngredients as $ing){
+//            if ($ing->getParent() == 0){
+//                $orderedIngredients[$ing->getName()] = array();
+//            }
+//            else{
+//
+//            }
+//        }
+//    }
 
 }
