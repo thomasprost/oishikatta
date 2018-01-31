@@ -89,25 +89,7 @@ body.show-recipe{
         margin: 20px 0;
       }
 
-      ul{
-        list-style: none;
-        li{
-          list-style-type: none;
-          counter-increment: step;
-          position: relative;
-          margin: 20px 40px 20px;
-          line-height: 22px;
 
-          &:before{
-            content: counter(step);
-            vertical-align: middle;
-            color: $dark__blue;
-            position: absolute;
-            left: -30px;
-
-          }
-        }
-      }
     }
 
     #ingredients{
@@ -131,6 +113,28 @@ body.show-recipe{
             flex-basis: 65%;
           }
         }
+      }
+    }
+  }
+}
+
+#steps{
+  ul{
+    list-style: none;
+    li{
+      list-style-type: none;
+      counter-increment: step;
+      position: relative;
+      margin: 20px 40px 20px;
+      line-height: 22px;
+
+      &:before{
+        content: counter(step);
+        vertical-align: middle;
+        color: $dark__blue;
+        position: absolute;
+        left: -30px;
+
       }
     }
   }

@@ -1,16 +1,28 @@
 {% extends 'base.html.twig' %}
+{% block title %}All recipes{% endblock %}
+{% block body_class %}all-recipe{% endblock %}
 
 {% block body %}
+    {% for flash_message in app.session.flashBag.get('notice') %}
+        <div class="flash-notice">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
     <div class="container">
         <section class="general-list">
             {% if recipes %}
                 {% for r in recipes %}
                     <article>
-                        <div class="recipe-bg" style="background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }})"></div>
+                        <div class="recipe-bg" style="{% if  r.mainImage is not null %}background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }}){% endif %}"></div>
                         <div class="caption">
-                            <h2>{{ r.name }}</h2>
-                            <p>{{ r.country }}</p>
-                            <a href="{{ path('recipe_show', {'slug': r.slug}) }}">View more</a>
+                            <h2>{{ r['name'] }}</h2>
+                            <p>
+                                {% if r['country'] is not null %}
+                                    {{ r['country'].name }} -
+                                {% endif %}
+                                {{ r['createdAt']|date('M Y') }}
+                            </p>
+                            <a href="{{ path('recipe_show', {'slug': r['slug']}) }}">View more</a>
                         </div>
                     </article>
 

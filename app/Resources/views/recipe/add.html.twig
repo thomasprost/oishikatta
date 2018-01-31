@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
-{% block body_class %}add-recipe{% endblock %}
+{% block body_class %}form-recipe add-recipe{% endblock %}
 {% block title %}Add a recipe{% endblock %}
 
 {% block body %}
     <div id="app">
         <div class="recipe-header">
-            {% verbatim %}
+
                 <h1>Add a recipe <br />
-                    {{ recipeTitle }}
+                    ${ recipe.title }
                 </h1>
-            {% endverbatim %}
+
             <div class="header-bg" style="background-image:url({{ asset('images/backgrounds/raspberry-cheesecake-with-grand-marnier.jpg') }})"></div>
         </div>
         <div class="container">
                 {{ form_start(form, {'attr': {'class': 'flex-container'}}) }}
                 <div class="half-width">
                     <h3>Prototype</h3>
-                    {{ form_row(form.name, {'attr': {'v-model': 'recipeTitle'}}) }}
+                    {{ form_row(form.name, {'attr': {'v-model': 'recipe.title'}}) }}
                     {{ form_row(form.intro) }}
                     {{ form_row(form.numberPeople) }}
                     {{ form_row(form.minutes) }}
@@ -40,8 +40,9 @@
                                 </li>
                             {% endfor %}
                         </ul>
+                        {#<p>Total Ingredients : ${countChildren('#ingredients-fields-list')}</p>#}
 
-                        <a href="#" class="add-another-el">Add ingredient</a>
+                        <a href="#" class="add-another-el" >Add ingredient</a>
                     </div>
 
 
@@ -68,4 +69,12 @@
         </div>
     </div>
 
+{% endblock %}
+{% block javascripts %}
+
+    <script>
+        let SfRecipe = {
+            title: ""
+        }
+    </script>
 {% endblock %}

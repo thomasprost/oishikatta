@@ -143,7 +143,21 @@ class RecipeStep
      */
     public function setRecipe(Recipe $recipe)
     {
+        if ($this->recipe !== null) {
+            $this->recipe->removeRecipeStep($this);
+        }
+
+        if ($recipe !== null) {
+            $recipe->addRecipeStep($this);
+        }
+
         $this->recipe = $recipe;
+        return $this;
+    }
+
+    public function addRecipe(Recipe $recipe)
+    {
+        $this->setRecipe($recipe);
     }
 
     /**
@@ -153,6 +167,8 @@ class RecipeStep
     {
         return $this->recipe;
     }
+
+
 
 }
 

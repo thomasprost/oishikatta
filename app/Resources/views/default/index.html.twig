@@ -11,7 +11,7 @@
                 {% if recipes %}
                     {% for r in recipes %}
                         <article>
-                            <div class="recipe-bg" style="background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }})"></div>
+                            <div class="recipe-bg" style="{% if  r.mainImage is not null %}background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }}){% endif %}"></div>
                             <div class="caption">
                                 <h2>{{ r['name'] }}</h2>
                                 <p>

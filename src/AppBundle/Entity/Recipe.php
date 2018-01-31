@@ -109,7 +109,7 @@ class Recipe
     /**
      * @var ArrayCollection $recipeSteps
      *
-     * @ORM\OneToMany(targetEntity="RecipeStep", mappedBy="recipe", cascade={"persist", "remove", "merge"})
+     * @ORM\OneToMany(targetEntity="RecipeStep", mappedBy="recipe", cascade={"persist", "remove"}, orphanRemoval=TRUE)
      */
     private $recipeSteps;
 
@@ -413,7 +413,7 @@ class Recipe
         return $this;
     }
 
-    public function removeRecipeStep(RecipeIngredient $recipeStep)
+    public function removeRecipeStep(RecipeStep $recipeStep)
     {
         if ($this->recipeSteps->contains($recipeStep)) {
             $this->recipeSteps->removeElement($recipeStep);

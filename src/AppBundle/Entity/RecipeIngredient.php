@@ -53,6 +53,7 @@ class RecipeIngredient
         return $this->id;
     }
 
+
     public function getRecipe()
     {
         return $this->recipe;

@@ -1,13 +1,4 @@
-body > header {
-  padding-top: 40px;
-  height: 150px;
-  padding-left: 250px;
-  background-color: transparent;
-  width: 100%;
-
-  box-shadow: none;
-
-  .search {
+body > .search {
     position: absolute;
     z-index: 101;
     top: 0;
@@ -37,28 +28,40 @@ body > header {
       &:before{
         opacity: 1;
       }
+
+      .search__form{
+        transform: translate3d(0,40vh,0) translate3d(0,-50%,0);
+      }
+
+      .btn--search {
+        pointer-events: auto;
+      }
+
+      .btn--search-close {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+        transition-delay: 0.1s;
+        pointer-events: auto;
+      }
     }
-
-  }
-
-  .search--open .search__form{
-    transform: translate3d(0,40vh,0) translate3d(0,-50%,0);
-  }
 
   .search__form {
     position: relative;
-    width: 40%;
+    width: 50%;
     min-width: 300px;
-    margin: 40px auto 0;
+    margin: 30px auto 0;
     padding-left: 120px;
+    transform: scale3d(0.5,0.5,1);
     transition: transform 0.5s;
     transition-timing-function: cubic-bezier(0.7,0,0.3,1);
   }
 
   .search__input {
-    font-size: 2rem;
+    font-size: 6rem;
     display: inline-block;
     width: 100%;
+    height: auto;
+    color: $light__blue;
     pointer-events: auto;
     background: transparent;
     border : 0;
@@ -74,13 +77,13 @@ body > header {
     display: none;
   }
 
-  .btn--search {
+  .btn--search, .btn--search-close {
     position: absolute;
     right: 2px;
     top: 0;
     margin: 0;
-    width: 35px;
-    height: 35px;
+    width: 70px;
+    height: 70px;
     pointer-events: none;
     background: transparent;
     cursor: pointer;
@@ -90,21 +93,29 @@ body > header {
     }
   }
 
-  .search--open .btn--search {
-    pointer-events: auto;
-  }
 
+  .btn--search-close {
+    font-size: 2rem;
+    position: absolute;
+    color: $dark__blue;
+    top: 1.25em;
+    right: 1.25em;
+    display: block;
+    opacity: 0;
+    z-index: 102;
+    transform: scale3d(0.8, 0.8, 1);
+    transition: opacity 0.5s, transform 0.5s;
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+  }
 
 
   .icon {
     display: block;
-    width: 35px;
-    height: 35px;
+    width: 70px;
+    height: 70px;
     margin: 0 auto;
     fill: $dark__blue;
   }
-
-
 }
 
 menu#main-menu{

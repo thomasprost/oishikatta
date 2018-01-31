@@ -46,7 +46,18 @@
                         </ul>
                     </div>
                 </div>
-
+                <div class="fixed-info">
+                    <i></i>
+                    <a href="{{ path('recipe_edit', {'slug': recipe.slug}) }}">
+                        Edit this recipe
+                    </a>
+                </div>
+                <div class="fixed-info" id="delete-recipe">
+                    <i></i>
+                    <a href="{{ path('recipe_delete', {'slug': recipe.slug}) }}">
+                        Delete this recipe
+                    </a>
+                </div>
 
             {% endif %}
         </div>

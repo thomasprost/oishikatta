@@ -15,7 +15,7 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
         return $this->createQueryBuilder('r')
             ->select('r, c')
             ->leftJoin('r.country', 'c')
-            ->orderBy('r.createdAt', 'DESC')
+            ->orderBy('r.updatedAt', 'DESC')
             ->getQuery()->getArrayResult();
     }
 }

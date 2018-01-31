@@ -16,9 +16,9 @@ class RecipeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle:Recipe');
+        $repository = $this->getDoctrine()->getRepository(Recipe::class);
 
-        $recipes = $repository->findAll();
+        $recipes = $repository->getLatestRecipes();
 
         return $this->render('recipe/index.html.twig', array(
             'recipes' => $recipes
@@ -50,6 +50,11 @@ class RecipeController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($recipe);
             $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Recipe '. $recipe.getName() .' created !!'
+            );
             return $this->redirectToRoute('recipe_home');
         }
 
@@ -86,7 +91,8 @@ class RecipeController extends Controller
             'slug' => $slug
         ));
         if (!$recipe)
-            throw $this->createNotFoundException('No recipe found for id '.$id);
+            throw $this->createNotFoundException('No recipe found for slug '.$slug);
+
 
         $form = $this->createForm(RecipeType::class, $recipe);
 
@@ -94,7 +100,28 @@ class RecipeController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
+                $recInc = $recipe->getRecipeIngredients();
+                foreach ($recInc as $rec){
+                    if($rec->getRecipe() === null){
+                        $rec->setRecipe($recipe);
+                    }
+
+                }
+//
+                $recSteps = $recipe->getRecipeSteps();
+                foreach ($recSteps as $step){
+                    if($step->getRecipe() === null) {
+                        $step->setRecipe($recipe);
+                    }
+                }
+
+                $em->persist($recipe);
                 $em->flush();
+                $this->addFlash(
+                    'notice',
+                    'Recipe '. $recipe->getName() .' updated '
+                );
+
                 return $this->redirect($this->generateUrl('recipe_home'));
             }
         }
@@ -106,16 +133,23 @@ class RecipeController extends Controller
     }
 
     /**
-     * @Route("/recipe/delete/{id}", name="recipe_delete")
+     * @Route("/recipe/delete/{slug}", name="recipe_delete")
      */
-    public function deleteRecipeAction($id, Request $request)
+    public function deleteRecipeAction($slug, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Recipe::class);
 
-        $recipe = $repository->find($id);
+        $recipe = $repository->findOneBy(array(
+            'slug' => $slug
+        ));
 
         $em->remove($recipe);
+        $em->flush();
+        $this->addFlash(
+            'notice',
+            'Recipe deleted '
+        );
 
         return $this->redirect($this->generateUrl('recipe_home'));
     }

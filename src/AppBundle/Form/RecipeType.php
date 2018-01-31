@@ -50,6 +50,7 @@ class RecipeType extends AbstractType
                 'entry_type'   => RecipeIngredientType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
+                'by_reference' => false,
                 // these options are passed to each "recipeIngredient" type
                 'entry_options'  => array(
                     'attr'      => array('class' => 'ingredient-box')
