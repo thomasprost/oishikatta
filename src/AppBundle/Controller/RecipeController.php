@@ -154,6 +154,25 @@ class RecipeController extends Controller
         return $this->redirect($this->generateUrl('recipe_home'));
     }
 
+    /**
+     * @Route("/search/", name="recipe_search")
+     */
+    public function searchRecipeAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(Recipe::class);
+
+        $searchField = $request->request->get('search');
+        $recipes = null;
+        if($searchField !== null){
+            $recipes = $repository->searchRecipe($searchField);
+        }
+
+
+        return $this->render('recipe/search.html.twig', array(
+            'recipes' => $recipes,
+            'searchField' => $searchField
+        ));
+    }
 
 
 }

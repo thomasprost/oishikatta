@@ -18,4 +18,15 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('r.updatedAt', 'DESC')
             ->getQuery()->getArrayResult();
     }
+
+    public function searchRecipe($searchText){
+        $query = $this->createQueryBuilder('r')
+            ->select('r, c')
+            ->leftJoin('r.country', 'c')
+            ->where("r.name LIKE '%".$searchText."%'")
+            ->orderBy('r.updatedAt', 'DESC')
+            ->getQuery();
+
+        return $query->getArrayResult();
+    }
 }

@@ -82,7 +82,8 @@ let OISHI =  (function () {
     let toggleSearch = function () {
         const searchInput = document.querySelector('#search-input'),
             closeSearch = document.querySelector('#btn-search-close'),
-            searchParent = document.querySelector('.search')
+            searchParent = document.querySelector('.search'),
+            searchButton = document.querySelector('.btn--search')
         searchInput.addEventListener('click', function (e) {
             searchParent.classList.add('search--open')
         })
@@ -90,6 +91,13 @@ let OISHI =  (function () {
         closeSearch.addEventListener('click', function (e) {
             searchParent.classList.remove('search--open')
         })
+
+        searchButton.addEventListener('click', function (e) {
+            e.preventDefault()
+            const form = document.forms["search-form"].submit();
+        })
+
+
     }
 
     let beforeDeletingRecipe = function () {
@@ -106,9 +114,12 @@ let OISHI =  (function () {
     }
 
 
-    function manageFlashMessages() {
-        if(document.body.classList.contains('all-recipe') && document.querySelector('.flash-notice')){
-
+    let manageFlashMessages = function () {
+        const flash = document.querySelector('.flash-notice')
+        if(document.body.classList.contains('all-recipe') && flash !== null){
+            window.setTimeout(function () {
+                flash.classList.remove('showing')
+            }, 6000)
         }
     }
 

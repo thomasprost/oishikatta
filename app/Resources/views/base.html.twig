@@ -21,7 +21,7 @@
                         </use>
                     </svg>
                 </div>
-                <form class="search__form" action="">
+                <form class="search__form" id="search-form" action="{{ path('recipe_search') }}" method="post">
                     <input id="search-input" class="search__input" name="search" type="search" placeholder="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                     <div class="btn btn--search"><svg class="icon icon--search"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search">
                                 <svg id="icon-search" viewBox="0 0 24 24" width="100%" height="100%">

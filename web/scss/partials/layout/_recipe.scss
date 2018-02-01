@@ -118,6 +118,18 @@ body.show-recipe{
   }
 }
 
+body.search-recipe{
+  #search-intro{
+    padding-left: 40px;
+    font-size: 2rem;
+    margin-bottom: 30px;
+
+    span{
+      color: $dark__blue;
+    }
+  }
+}
+
 #steps{
   ul{
     list-style: none;
