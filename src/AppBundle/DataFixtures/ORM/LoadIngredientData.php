@@ -46,43 +46,43 @@ class LoadIngredientData implements FixtureInterface
 //            $manager->flush();
 //        }
 
-        $parentPath = "web/images/ingredients";
-        $parentDir = new DirectoryIterator(dirname($parentPath."/*"));
-        $filetypes = array("jpg", "png");
-
-        foreach ($parentDir as $fileParentInfo) {
-            if (!$fileParentInfo->isDot() && $fileParentInfo->isFile()) {
-
-                $fullName = str_replace('-',' ', ucfirst(substr($fileParentInfo->getFilename(), 0, -4)));
-                $ingredientDb = new Ingredient();
-                $ingredientDb->setName($fullName);
-
-                $ingredientDb->setImage($fileParentInfo->getFilename());
-                $ingredientDb->setParent(0);
-                $manager->persist($ingredientDb);
-                $manager->flush();
-
-                $childPath = $parentPath.'/'.$fullName.'/*';
-                $currentId = $ingredientDb->getId();
-                $childDir = new DirectoryIterator(dirname($childPath));
-
-                foreach ($childDir as $fileinfo) {
-                    if (!$fileinfo->isDot() && $fileinfo->isFile() && in_array(strtolower($fileinfo->getExtension()), $filetypes)) {
-                        var_dump($fileinfo->getFilename());
-
-                        $childFullName = str_replace('-',' ', ucfirst(substr($fileinfo->getFilename(), 0, -4)));
-                        $ingredientDb = new Ingredient();
-                        $ingredientDb->setName($childFullName);
-                        $ingredientDb->setImage($fullName.'/'.$fileinfo->getFilename());
-                        $ingredientDb->setParent($currentId);
-
-                        $manager->persist($ingredientDb);
-                        $manager->flush();
-
-                    }
-                }
-            }
-        }
+//        $parentPath = "web/images/ingredients";
+//        $parentDir = new DirectoryIterator(dirname($parentPath."/*"));
+//        $filetypes = array("jpg", "png");
+//
+//        foreach ($parentDir as $fileParentInfo) {
+//            if (!$fileParentInfo->isDot() && $fileParentInfo->isFile()) {
+//
+//                $fullName = str_replace('-',' ', ucfirst(substr($fileParentInfo->getFilename(), 0, -4)));
+//                $ingredientDb = new Ingredient();
+//                $ingredientDb->setName($fullName);
+//
+//                $ingredientDb->setImage($fileParentInfo->getFilename());
+//                $ingredientDb->setParent(0);
+//                $manager->persist($ingredientDb);
+//                $manager->flush();
+//
+//                $childPath = $parentPath.'/'.$fullName.'/*';
+//                $currentId = $ingredientDb->getId();
+//                $childDir = new DirectoryIterator(dirname($childPath));
+//
+//                foreach ($childDir as $fileinfo) {
+//                    if (!$fileinfo->isDot() && $fileinfo->isFile() && in_array(strtolower($fileinfo->getExtension()), $filetypes)) {
+//                        var_dump($fileinfo->getFilename());
+//
+//                        $childFullName = str_replace('-',' ', ucfirst(substr($fileinfo->getFilename(), 0, -4)));
+//                        $ingredientDb = new Ingredient();
+//                        $ingredientDb->setName($childFullName);
+//                        $ingredientDb->setImage($fullName.'/'.$fileinfo->getFilename());
+//                        $ingredientDb->setParent($currentId);
+//
+//                        $manager->persist($ingredientDb);
+//                        $manager->flush();
+//
+//                    }
+//                }
+//            }
+//        }
 
 
 //        $dir = new DirectoryIterator(dirname("web/images/ingredients/vegetables/*"));
