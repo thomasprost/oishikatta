@@ -51,11 +51,11 @@ doctrine_migrations:
 doctrine:
     dbal:
         driver: pdo_mysql
-        host: '%database_host%'
-        port: '%database_port%'
-        dbname: '%database_name%'
-        user: '%database_user%'
-        password: '%database_password%'
+        host: '%env(database_host)%'
+        port: '%env(database_port)%'
+        dbname: '%env(database_name)%'
+        user: '%env(database_user)%'
+        password: '%env(database_password)%'
         charset: utf8mb4
         default_table_options:
             charset: utf8mb4
