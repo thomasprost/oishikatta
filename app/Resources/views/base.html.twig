@@ -2,12 +2,79 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="robots" content="noindex">
+        <title>{% block title %}{% endblock %} | Oishikatta </title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('dist/main.css') }}"  />
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="{% block body_class %}{% endblock %}">
+
+            <div class="search">
+                <div id="btn-search-close" class="btn btn--search-close" aria-label="Close search form">
+                    <svg class="icon icon--cross">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cross">
+                            <svg id="icon-cross" viewBox="0 0 24 24" width="100%" height="100%">
+                                <title>cross</title>
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                            </svg>
+                        </use>
+                    </svg>
+                </div>
+                <form class="search__form" id="search-form" action="{{ path('recipe_search') }}" method="post">
+                    <input id="search-input" class="search__input" name="search" type="search" placeholder="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <div class="btn btn--search"><svg class="icon icon--search"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search">
+                                <svg id="icon-search" viewBox="0 0 24 24" width="100%" height="100%">
+                                    <title>search</title>
+                                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                </svg>
+                            </use></svg></div>
+                </form>
+            </div>
+
+            {#<div class="container">#}
+
+                {#<nav>#}
+                    {#<ul>#}
+                        {#<li><a href="{{ path('recipe_home') }}">Latest Recipes</a></li>#}
+                        {#<li><a href="{{ path('recipe_add') }}">Add New</a></li>#}
+                        {#<li><a href="#">Find by </a></li>#}
+                    {#</ul>#}
+                {#</nav>#}
+            {#</div>#}
+
+        <menu id="main-menu">
+            <a id="logo" href="{{ path('homepage') }}"></a>
+            <h2>oishi
+                <span id="site-name">
+                    <i id="name-before">sou</i>
+                    <i id="name-main">katta</i>
+                    <i id="name-after">iyo!</i>
+                </span>
+            </h2>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('homepage') }}">Home</a></li>
+                    <li><a href="{{ path('recipe_home') }}">Latest Recipes</a></li>
+                    <li><a href="{{ path('recipe_add') }}">Add New</a></li>
+                    <li><a href="#">Find by </a></li>
+                    {#<li><a href="{{ path('ingredient_home') }}">Ingredients</a></li>#}
+                    {#<li><a href="{{ path('ingredient_add') }}">Add Ingredient</a></li>#}
+                </ul>
+            </nav>
+        </menu>
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
+
+        <footer>
+
+        </footer>
         {% block javascripts %}{% endblock %}
+        <script src="https://unpkg.com/vue"></script>
+        <script src="{{ asset('dist/bundle.js') }}" ></script>
+
     </body>
 </html>

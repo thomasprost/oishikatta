@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body_class %}add-ingredient{% endblock %}
+{% block title %}Add an ingredient{% endblock %}
+
+{% block body %}
+    <div id="app">
+        <h1>Edit ingredient {{ ingredient.name }}</h1>
+        <div class="container">
+                {{ form_start(form, {'attr': {'class': 'flex-container'}}) }}
+                <div class="half-width">
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.nameJa) }}
+                    <img class="entity-img" src="{{ asset('uploads/images/ingredients/'~ ingredient.image ~'') }}" alt="{{ ingredient.name }}">
+                    {{ form_row(form.imageFile) }}
+
+                    {{ form_widget(form.save) }}
+
+                </div>
+
+
+                {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

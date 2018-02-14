@@ -1,0 +1,141 @@
+label{
+  width: 100%;
+  margin: 10px 0;
+  display: block;
+}
+
+input, textarea, select {
+  padding: 5px 10px;
+  width: 100%;
+  max-width: 100%;
+  border: $light__blue 2px solid;
+  height: 40px;
+  outline : none;
+  transition: all .4s ease;
+
+  &:focus{
+    border-color: $dark__blue;
+  }
+}
+
+textarea{
+  min-height: 150px;
+}
+
+input[type='submit'], button{
+  height: 50px;
+  background-color: $dark__blue;
+  color: #fff;
+  border: 0;
+  overflow: hidden;
+  width: 245px;
+  cursor: pointer;
+  z-index: 1;
+  transition: border-color 0.3s, color 0.3s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 15px auto;
+  display: block;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    background: #37474f;
+    z-index: -1;
+    transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    transform-origin: 0% 100%;
+    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+  }
+
+  &:hover{
+    color: $dark__blue;
+    border-color: #fff;
+
+    &::before{
+      opacity: 1;
+      background-color: #fff;
+      transform: rotate3d(0, 0, 1, 0deg);
+      transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    }
+  }
+}
+
+
+
+input[type="checkbox"]{
+  width: 25px;
+}
+
+form.flex-container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 0 20px;
+
+  .half-width{
+    width: 45%;
+  }
+
+  .full-width{
+    width: 95%;
+    margin: 20px 0;
+  }
+
+  .entity-img{
+    max-height: 200px;
+  }
+
+  .upload-image{
+    label{
+      display: none;
+    }
+
+    > div {
+      width: 50%;
+      padding-right: 20px;
+      float: left;
+    }
+
+    &:after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+  }
+
+  .fluid-elements{
+    li{
+      position: relative;
+    }
+
+  }
+
+  .add-another-el{
+    display: block;
+    margin: 15px 0;
+  }
+
+  .del-another-el{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10px;
+    height: 10px;
+
+    &:after{
+      content: 'x';
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  
+}

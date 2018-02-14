@@ -1,0 +1,153 @@
+
+
+
+body.add-recipe, body.edit-recipe
+{
+
+  .ingredient-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    > div{
+      flex-basis: 45%;
+    }
+  }
+}
+
+body.show-recipe{
+  .recipe-wrapper{
+    padding: 0 20px;
+
+    h2{
+      margin-bottom: 20px;
+      font-size: 3rem;
+    }
+
+    #recipe-img{
+      max-width: 50%;
+      width: 400px;
+      height: auto;
+      float: left;
+    }
+
+    .recipe-top-info{
+      float: left;
+      width: 50%;
+      padding-left: 20px;
+
+      h1{
+        padding-bottom: 14px;
+      }
+
+      p{
+        margin: 20px 0;
+        line-height: 22px;
+      }
+      .recipe-desc{
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 15px;
+        &:after, &:before{
+          position: absolute;
+          background-color: $light__blue;
+          width: 100%;
+          height: 1px;
+
+          left: 0;
+          content: '';
+        }
+        &:before{
+          top: 0;
+        }
+
+        &:after{
+          bottom: 0;
+        }
+
+      }
+
+    }
+
+    #instructions{
+      position: relative;
+      clear: both;
+    }
+
+    #steps, #ingredients{
+      padding-top: 20px;
+    }
+
+    #steps{
+
+      clear: both;
+      width: 65%;
+      overflow: hidden;
+
+      p{
+        width: 100%;
+        margin: 20px 0;
+      }
+
+
+    }
+
+    #ingredients{
+      position: absolute;
+      width: 30%;
+      top: 0;
+      right: 0;
+      overflow: hidden;
+      //padding: 0 0 5px 5px;
+      //border-bottom: 1px $light__blue solid;
+      //border-left: 1px $light__blue solid;
+
+      ul li{
+        display: flex;
+        margin: 15px 0;
+
+        div{
+          flex-wrap: nowrap;
+
+          &.ing-name{
+            flex-basis: 65%;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.search-recipe{
+  #search-intro{
+    padding-left: 40px;
+    font-size: 2rem;
+    margin-bottom: 30px;
+
+    span{
+      color: $dark__blue;
+    }
+  }
+}
+
+#steps{
+  ul{
+    list-style: none;
+    li{
+      list-style-type: none;
+      counter-increment: step;
+      position: relative;
+      margin: 20px 40px 20px;
+      line-height: 22px;
+
+      &:before{
+        content: counter(step);
+        vertical-align: middle;
+        color: $dark__blue;
+        position: absolute;
+        left: -30px;
+
+      }
+    }
+  }
+}

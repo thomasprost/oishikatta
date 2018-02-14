@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body_class %}ingredient{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <section class="general-list">
+            {% if ingredients %}
+                {% for i in ingredients %}
+                    <article>
+                        <div class="recipe-bg" style="background-image: url({{ asset('uploads/images/ingredients/'~ i.Image|replace({' ':'%20'}) ~'') }})"></div>
+                        <div class="caption">
+                            <h2>{{ i.name }}</h2>
+                            {#<p>{{ r.country }}</p>#}
+                            <a href="{{ path('ingredient_home', {'name': i.name}) }}">View more</a>
+                        </div>
+                    </article>
+
+                {% endfor %}
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

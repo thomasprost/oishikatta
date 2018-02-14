@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {% if recipes %}
+        {{ recipes|length }}recipe{% if recipes|length > 1 %}s{% endif %} found
+    {% else %}
+        No recipes found sorry
+    {% endif %}
+{% endblock %}
+{% block body_class %}search-recipe{% endblock %}
+
+
+{% block body %}
+
+    <div id="search-intro">
+        {% if recipes %}
+            <p>{{ recipes|length }} recipe{% if recipes|length > 1 %}s{% endif %} found for the search <span>{{ searchField }}</span> </p>
+        {% else %}
+            <p>Sorry, no recipes could be found with the search <span>{{ searchField }}</span></p>
+        {% endif %}
+    </div>
+
+
+
+    <div class="container">
+        <section class="general-list">
+            {% if recipes %}
+                {% for r in recipes %}
+                    <article>
+                        <div class="recipe-bg" style="{% if  r.mainImage is not null %}background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }}){% endif %}"></div>
+                        <div class="caption">
+                            <h2>{{ r['name'] }}</h2>
+                            <p>
+                                {% if r['country'] is not null %}
+                                    {{ r['country'].name }} -
+                                {% endif %}
+                                {{ r['createdAt']|date('M Y') }}
+                            </p>
+                            <a href="{{ path('recipe_show', {'slug': r['slug']}) }}">View more</a>
+                        </div>
+                    </article>
+
+                {% endfor %}
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,99 @@
+
+/**********/
+/* Global */
+/**********/
+html {
+  font-size: 62.5%; // 10px
+}
+
+body, html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  color: #000;
+  font-size: 1.6rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+*
+{
+  box-sizing: border-box;
+}
+
+.container{
+  width: 100%;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+a{
+  text-decoration: none;
+  color: $dark__blue;
+
+  &:hover{
+    color: $mid__blue;
+  }
+
+}
+
+h1{
+  font-size: 4rem;
+}
+
+
+h3{
+  font-size: 2.5rem;
+  position: relative;
+  padding-top: 5px;
+  margin: 20px 0;
+
+  &:before, &:after{
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 2.5em;
+    height: 4px;
+    background: $light__blue;
+    transform-origin: 0% 50%;
+    transition: transform 0.5s;
+  }
+
+  &:after{
+    transform: scale3d(0,1,1);
+    background: $dark__blue;
+  }
+
+  &:hover:after{
+    transform: scale3d(1,1,1);
+  }
+}
+
+div.recipe-header{
+  height: 250px;
+  width: 100%;
+  position: relative;
+
+  h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+  }
+
+  .header-bg{
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    transition: all .4s ease;
+  }
+}

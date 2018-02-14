@@ -1,0 +1,28 @@
+/*
+  Reset & Normalize
+*/
+
+@import "partials/common/reset";
+@import "partials/common/variables";
+
+/*
+  Website's common styles
+*/
+@import "partials/common/base";
+@import "partials/layout/layout";
+@import "partials/common/form";
+
+/*
+  Layout
+*/
+
+@import "partials/layout/header";
+@import "partials/layout/recipe";
+@import "partials/layout/ingredient";
+
+
+/*
+  Pages specific
+*/
+
+@import "partials/pages/home";

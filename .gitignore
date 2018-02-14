@@ -21,3 +21,14 @@
 /web/assets/images/dist/
 /web/uploads/
 /web/dist/
+npm-debug.log
+
+
+# Elastic Beanstalk Files
+
+.elasticbeanstalk/
+
+!.elasticbeanstalk/*.cfg.yml
+
+!.elasticbeanstalk/*.global.yml
+

@@ -1,0 +1,27 @@
+$black            :       transparentize(#000, .1);
+
+
+
+/** Blue **/
+$dark__blue       :       #1076BA;
+$light__blue      :       #89D5F6;
+$mid__blue        :       #5BA3D3;
+$dark__grey       :       #2a2b30;
+$grey__blue       :       rgb(47, 63, 70);
+$blue__grey       :       #103871;
+//
+
+/** Reset colors **/
+$red              :       #dc3545;
+$green            :       #28a745;
+
+/** Layout **/
+body{
+  --recipe-row       :       3;
+
+  &.ingredient{
+    --recipe-row     :       5;
+  }
+}
+
+$recipe_gutter    :       20px;
