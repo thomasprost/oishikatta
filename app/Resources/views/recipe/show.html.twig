@@ -22,16 +22,6 @@
                 </div>
 
                 <div id="instructions">
-                    <div id="steps">
-                        <h3>Steps</h3>
-                        <ul>
-                            {% if recipe.recipeSteps %}
-                                {% for s in recipe.recipeSteps %}
-                                    <li>{{ s.instruction }}</li>
-                                {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
                     <div id="ingredients">
                         <h3>Ingredients</h3>
                         <ul>
@@ -45,6 +35,17 @@
                             {% endif %}
                         </ul>
                     </div>
+                    <div id="steps">
+                        <h3>Steps</h3>
+                        <ul>
+                            {% if recipe.recipeSteps %}
+                                {% for s in recipe.recipeSteps %}
+                                    <li>{{ s.instruction }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+
                 </div>
                 <div class="fixed-info">
                     <i></i>

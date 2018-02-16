@@ -22,6 +22,10 @@ body{
   &.ingredient{
     --recipe-row     :       5;
   }
+
+  @include mobile(){
+    --recipe-row     :       1;
+  }
 }
 
 $recipe_gutter    :       20px;

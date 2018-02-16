@@ -4,6 +4,9 @@ import rotateText from './mine.js'
 let OISHI =  (function () {
     'use strict';
 
+    /*
+        Add a new Ingredient or Step to a Recipe. Manages the number the new element is and adds it from templates provided by Symfony form
+     */
     let addNewElement = function () {
         let addButton = document.querySelectorAll('.add-another-el')
 
@@ -39,12 +42,32 @@ let OISHI =  (function () {
 
     }
 
+    /*
+        Removes an element from the list in the DOM
+     */
     let bindRemoveElement = function (closeElement) {
         closeElement.addEventListener("click", function (e) {
             e.preventDefault()
             const parentToDelete = this.parentNode
             parentToDelete.parentNode.removeChild(parentToDelete)
         })
+    }
+    
+    /*
+        Open mobile menu on menu button click
+     */
+    let toggleMobileMenu = function () {
+        const menuButton = document.querySelector('#mobile-menu-bt'),
+            menu = document.querySelector('#main-menu'),
+            closeButton = document.querySelector('#mobile-menu-close')
+
+        menuButton.addEventListener('click', function () {
+            menu.classList.add('menu--open')
+        }, false)
+
+        closeButton.addEventListener('click', function () {
+            menu.classList.remove('menu--open')
+        }, false)
     }
 
 
@@ -79,6 +102,9 @@ let OISHI =  (function () {
         })
     }
 
+    /*
+        Toggle the search field to be zoomed in on click
+     */
     let toggleSearch = function () {
         const searchInput = document.querySelector('#search-input'),
             closeSearch = document.querySelector('#btn-search-close'),
@@ -100,6 +126,9 @@ let OISHI =  (function () {
 
     }
 
+    /*
+        Security check before deleting a recipe to prevent mis-click
+     */
     let beforeDeletingRecipe = function () {
         // Verification before deleting a recipe
         let deleteRecipeBt = document.querySelector('#delete-recipe')
@@ -114,6 +143,9 @@ let OISHI =  (function () {
     }
 
 
+    /*
+        Flash messages to be displayed to the user on any change to a recipe (CRUD action)
+     */
     let manageFlashMessages = function () {
         const flash = document.querySelector('.flash-notice')
         if(document.body.classList.contains('all-recipe') && flash !== null){
@@ -123,6 +155,9 @@ let OISHI =  (function () {
         }
     }
 
+    /*
+        Initiates our oishi object
+     */
     let init = function () {
         if(document.body.classList.contains('form-recipe')){
             addNewElement();
@@ -134,6 +169,7 @@ let OISHI =  (function () {
         toggleSearch()
         beforeDeletingRecipe()
         manageFlashMessages()
+        toggleMobileMenu();
 
     };
 

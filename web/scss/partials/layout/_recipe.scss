@@ -115,6 +115,37 @@ body.show-recipe{
         }
       }
     }
+
+    @include mobile(){
+      #recipe-img {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .recipe-top-info{
+        width: 100%;
+        padding-left: 0;
+        margin-top: 30px;
+
+        h1{
+          text-align: center;
+        }
+      }
+
+      #steps, #ingredients{
+        width: 100%;
+      }
+
+      #ingredients{
+        position: relative;
+      }
+
+      #steps{
+        ul li {
+          margin-right: 10px;
+        }
+      }
+    }
   }
 }
 
