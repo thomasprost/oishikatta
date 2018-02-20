@@ -149,7 +149,8 @@ let OISHI =  (function () {
     let manageFlashMessages = function () {
         const flash = document.querySelector('.flash-notice')
         if(document.body.classList.contains('all-recipe') && flash !== null){
-            window.setTimeout(function () {
+            flash.classList.add('showing')
+            window.setTimeout(() => {
                 flash.classList.remove('showing')
             }, 6000)
         }

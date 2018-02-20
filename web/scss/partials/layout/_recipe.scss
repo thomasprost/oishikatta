@@ -14,6 +14,10 @@ body.add-recipe, body.edit-recipe
     }
   }
 
+  .hidden-fields{
+    display: none;
+  }
+
   @include mobile(){
     #steps{
       ul li {

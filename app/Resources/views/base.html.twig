@@ -11,7 +11,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body class="{% block body_class %}{% endblock %}">
-
+    {% for flash_message in app.session.flashBag.get('notice') %}
+        <div class="flash-notice">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
             <div class="search">
                 <div id="btn-search-close" class="btn btn--search-close" aria-label="Close search form">
                     <svg class="icon icon--cross">
