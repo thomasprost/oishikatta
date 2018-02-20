@@ -224,3 +224,8 @@ section.general-list{
   }
 }
 
+@include mobile(){
+  .content{
+    margin-left: 0;
+  }
+}
