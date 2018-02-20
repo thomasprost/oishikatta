@@ -137,5 +137,11 @@ form.flex-container{
     }
   }
 
+  @include mobile(){
+    .half-width, .full-width{
+      width: 100%;
+    }
+  }
+
   
 }

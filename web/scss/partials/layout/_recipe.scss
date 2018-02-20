@@ -13,6 +13,14 @@ body.add-recipe, body.edit-recipe
       flex-basis: 45%;
     }
   }
+
+  @include mobile(){
+    #steps{
+      ul li {
+        margin-right: 10px;
+      }
+    }
+  }
 }
 
 body.show-recipe{
