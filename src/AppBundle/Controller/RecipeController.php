@@ -53,7 +53,7 @@ class RecipeController extends Controller
 
             $this->addFlash(
                 'notice',
-                'Recipe '. $recipe.getName() .' created !!'
+                'Recipe '. $recipe->getName() .' created !!'
             );
             return $this->redirectToRoute('recipe_home');
         }

@@ -3,11 +3,6 @@
 {% block body_class %}all-recipe{% endblock %}
 
 {% block body %}
-    {% for flash_message in app.session.flashBag.get('notice') %}
-        <div class="flash-notice">
-            {{ flash_message }}
-        </div>
-    {% endfor %}
     <div class="container">
         <section class="general-list">
             {% if recipes %}
