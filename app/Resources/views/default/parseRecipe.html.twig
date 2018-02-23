@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %} Parse recipe
+{% endblock %}
+{% block body_class %}parse-recipe{% endblock %}
+
+
+{% block body %}
+
+    <div id="parse-intro">
+        <p>On this page, you can paste the Url of a recipe you liked/made from another website and it will create a new recipe on Oishikatta from the Url pasted.</p>
+        <p>For now only Cookpad works</p>
+    </div>
+    <div class="container">
+        {% if errorMessage %}
+            <div class="errors">
+                <p>Sorry something went wrong</p>
+                <p>{{ errorMessage }}</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
