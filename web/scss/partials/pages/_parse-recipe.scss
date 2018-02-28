@@ -1,0 +1,55 @@
+body.parse-recipe{
+  .container{
+    padding: 0 20px;
+
+    ul {
+      list-style: initial;
+      margin-top: 15px;
+
+      li{
+        margin-left: 20px;
+        list-style: square;
+      }
+    }
+
+    ul {
+      list-style: initial;
+      margin-top: 15px;
+
+      li{
+        margin-left: 20px;
+        list-style: square;
+      }
+    }
+  }
+
+  h1{
+    margin-bottom: 20px;
+  }
+
+  p{
+    line-height: 2.7rem;
+  }
+
+
+
+  #url-field{
+    width: 50%;
+    margin: 20px auto;
+
+    label, input[type='text']{
+      display: inline-block;
+    }
+
+    .errors{
+      margin: 20px 0;
+
+      p{
+        color: $red;
+      }
+    }
+
+  }
+
+
+}
