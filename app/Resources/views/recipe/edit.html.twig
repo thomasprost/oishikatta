@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body_class %}form-recipe edit-recipe{% endblock %}
+{% block title %}{{ recipe.name }}{% endblock %}
 
 {% block body %}
     <div id="app">
@@ -21,7 +22,9 @@
             </div>
             <div class="half-width">
                 <h3>Illustrate</h3>
-                <img class="entity-img" src="{{ asset('uploads/images/recipes/'~ recipe.mainImage ~'') }}" alt="{{ recipe.name }}">
+                {% if recipe.mainImage %}
+                    <img class="entity-img" src="{{ asset('uploads/images/recipes/'~ recipe.mainImage ~'') }}" alt="{{ recipe.name }}">
+                {% endif %}
                 {{ form_row(form.mainImageFile) }}
                 <h3>Define</h3>
                 <label>Country</label>
@@ -76,7 +79,7 @@
 
     <script>
         let SfRecipe = {
-            title: "{{ recipe.name }}"
+            title: "{{ recipe.name|trim('\n') }}"
         }
     </script>
 {% endblock %}

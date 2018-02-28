@@ -28,10 +28,12 @@ class RecipeType extends AbstractType
                 'required' => false
             ) )
             ->add('numberPeople',IntegerType::class , array(
-                'label' => 'For how many people ?'
+                'label' => 'For how many people ?',
+                'required' => false
             ))
             ->add('minutes',IntegerType::class , array(
-                'label' => 'Time it takes (in Minutes)'
+                'label' => 'Time it takes (in Minutes)',
+                'required' => false
             ))
             ->add('link')
             ->add('country')

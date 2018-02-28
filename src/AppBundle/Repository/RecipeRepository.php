@@ -29,4 +29,19 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getArrayResult();
     }
+
+    // Prevents a recipe to be parsed multiple times in a short time span (30 minutes)
+    public function recipeJustCreated($link){
+
+        // Time minus 30 minutes
+        $timeMinus30 = time() - (30 * 60);
+        $time = date('Y-m-d H:i:s', $timeMinus30);
+        $query = $this->createQueryBuilder('r')
+            ->select('r')
+            ->where("r.link = '".$link."'")
+            ->andWhere("r.createdAt >= '".$time."'")
+            ->getQuery()->getArrayResult();
+
+        return $query;
+    }
 }

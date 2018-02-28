@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
@@ -32,7 +33,7 @@ class Recipe
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
