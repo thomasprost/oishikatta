@@ -47,7 +47,7 @@ class DefaultController extends Controller
 
                 if(empty($hasRecipe)){
                     // Create new instance of the helper
-                    $crawlHelper = new CrawlHelper($urlField);
+                    $crawlHelper = new CrawlHelper($urlField, $this->get('kernel')->getRootDir().'/../web');
 
                     // Get the Html from the cUrl request
                     $html = $crawlHelper->getHtml();

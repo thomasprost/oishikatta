@@ -72,7 +72,11 @@
 
 {% endblock %}
 {% block javascripts %}
-
+    {% if app.environment == 'dev' %}
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    {% else %}
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
+    {% endif %}
     <script>
         let SfRecipe = {
             title: ""
