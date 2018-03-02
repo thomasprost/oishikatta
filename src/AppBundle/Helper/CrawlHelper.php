@@ -11,8 +11,8 @@ namespace AppBundle\Helper;
 use AppBundle\Entity\RecipeIngredient;
 use AppBundle\Entity\Recipe;
 use AppBundle\Entity\RecipeStep;
-use stdClass;
 use Symfony\Component\DomCrawler\Crawler;
+use Vich\UploaderBundle\Util\Transliterator;
 
 class CrawlHelper
 {
@@ -23,10 +23,12 @@ class CrawlHelper
     ];
 
     private $url;
+    private $webFolder;
 
-    public function __construct(string $url)
+    public function __construct(string $url, string $webFolder)
     {
         $this->url = $url;
+        $this->webFolder = $webFolder;
     }
 
 
@@ -84,10 +86,21 @@ class CrawlHelper
     private function crawlCookpad(Crawler $crawler){
         $title = $crawler->filter('.recipe-title') ? $crawler->filter('.recipe-title')->text() : null;
         $description = $crawler->filter('.description_text')? $crawler->filter('.description_text')->text() : null;
+        $image = $crawler->filter('#main-photo > img')->extract(['src']);
 
         $recipe = new Recipe();
         $recipe->setName($title);
         $recipe->setIntro($description);
+
+        // After crawling the image, we need to download it and save it to our image folder
+        if(!empty($image)){
+            $upload = $this->downloadRecipeImage($image[0], $title);
+
+            if($upload){
+                $recipe->setMainImage($upload);
+            }
+        }
+
 
         /*
          * Ingredients
@@ -141,7 +154,32 @@ class CrawlHelper
 
         $recipe->setLink($this->url);
 
+//        $this->downloadRecipeImage($)
+
+
         return $recipe;
+    }
+
+    private function downloadRecipeImage($url, $recipeName){
+        // Download the image
+        $content = file_get_contents($url);
+        // Vich uploader Transliterator helps a lot to generate a new name (See the doc)
+        $transName = Transliterator::transliterate($recipeName);
+
+        // Create a unique name for the image
+        $name = uniqid().'_'.$transName;
+
+        // Try to get the file extension
+        $split = explode("?", $url);
+        $extension = substr($split[0], -4);
+        // We guess the image extension
+
+        $fullname = $name.$extension;
+
+        // Save the image
+        $succeedUpload = file_put_contents($this->webFolder.'/uploads/images/recipes/'.$fullname, $content);
+
+        return $succeedUpload !== false ? $fullname : $succeedUpload;
     }
 
 

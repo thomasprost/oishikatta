@@ -197,9 +197,31 @@ menu#main-menu{
 
   body > .search {
     .search__form{
-      width: 80%;
-      margin-left: 0;
+      width: 60%;
+      margin: 10px 0;
       padding-left: 0;
+      min-width: initial;
+      transform: translate(calc( 50% - 28px ),-9px);
+    }
+    .search__input {
+      font-size: 4rem;
+    }
+
+    .btn--search, .btn--search-close{
+      top: 12px;
+      width: 45px;
+      height: 45px;
+    }
+
+    .icon {
+      width: 45px;
+      height: 45px;
+    }
+
+    &.search--open{
+      .search__form{
+        transform: translate3d(calc( 50% - 28px), 40vh, 0) translate3d(0, -50%, 0) scale(1.2);
+      }
     }
   }
 
