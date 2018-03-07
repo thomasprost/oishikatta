@@ -225,6 +225,12 @@ section.general-list{
   }
 }
 
+// For now just on 404 page
+.with-margins{
+  margin: 20px 0;
+  display: block;
+}
+
 @include mobile(){
   .content{
     margin-left: 0;

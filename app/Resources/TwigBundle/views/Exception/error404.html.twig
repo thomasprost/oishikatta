@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+{% block title %}
+    404 Page not found
+{% endblock %}
+{% block body %}
+
+    <div class="wrapper">
+        <h1>Page not found</h1>
+        <img src="{{ asset('images/common/watermelon.jpg') }}" alt="not found" class="with-margins"/>
+        <p>
+            Sorry it seems you got lost, we couldn't find this page.
+            You can <a href="{{ path('homepage') }}">return to the homepage</a> or <a href="{{ path('recipe_home') }}">see all recipes</a>.
+        </p>
+    </div>
+
+{% endblock %}

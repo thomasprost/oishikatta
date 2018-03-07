@@ -29,6 +29,11 @@ body {
   max-width: 100%;
 }
 
+.wrapper{
+  width: 100%;
+  padding: 0 30px;
+}
+
 a{
   text-decoration: none;
   color: $dark__blue;
@@ -41,6 +46,7 @@ a{
 
 h1{
   font-size: 4rem;
+  margin-bottom: 10px;
 }
 
 

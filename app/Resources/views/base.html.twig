@@ -5,10 +5,19 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="robots" content="noindex">
         <title>{% block title %}{% endblock %} | Oishikatta </title>
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('images/favicon/site.webmanifest') }}">
+        <link rel="mask-icon" href="{{ asset('images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#2d89ef">
+        <meta name="theme-color" content="#ffffff">
+
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="{{ asset('dist/main.css') }}"  />
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
     </head>
     <body class="{% block body_class %}{% endblock %}">
     {% for flash_message in app.session.flashBag.get('notice') %}
@@ -63,7 +72,7 @@
                     <li><a href="{{ path('homepage') }}">Home</a></li>
                     <li><a href="{{ path('recipe_home') }}">Latest Recipes</a></li>
                     <li><a href="{{ path('recipe_add') }}">Add New</a></li>
-                    <li><a href="#">Find by </a></li>
+                    <li><a href="{{ path('country_home') }}">Countries</a></li>
                     <li><a href="{{ path('parse_recipe') }}">Generate recipe </a></li>
                     {#<li><a href="{{ path('ingredient_home') }}">Ingredients</a></li>#}
                     {#<li><a href="{{ path('ingredient_add') }}">Add Ingredient</a></li>#}

@@ -9,6 +9,8 @@ parameters:
     locale: en
     app.path.recipe_images: /uploads/images/recipes
     app.path.ingredient_images: /uploads/images/ingredients
+    app.path.country_images: /uploads/images/countries
+    app.path.country_flags_images: /uploads/images/countries/flags
 
 framework:
     #esi: ~
@@ -96,5 +98,15 @@ vich_uploader:
         ingredient_images:
             uri_prefix:         '%app.path.ingredient_images%'
             upload_destination: '%kernel.root_dir%/../web/uploads/images/ingredients'
+            namer:              vich_uploader.namer_origname
+            inject_on_load:     true
+        country_images:
+            uri_prefix:         '%app.path.country_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/countries'
+            namer:              vich_uploader.namer_origname
+            inject_on_load:     true
+        country_flags_images:
+            uri_prefix:         '%app.path.country_flags_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/countries/flags'
             namer:              vich_uploader.namer_origname
             inject_on_load:     true
