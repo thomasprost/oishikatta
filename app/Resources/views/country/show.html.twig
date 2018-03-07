@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block body_class %}show-country{% endblock %}
+{% block title %}{% if country %}{{ country.name }}{% else %}Country not found{% endif %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="wrapper">
+            {% if country %}
+                <h1>{{ country.name }}{% if country.nameJa %} - {{ country.nameJa }}{% endif %}</h1>
+            {% endif %}
+
+            {% if country.recipes %}
+                {% if country.recipes.count > 0 %}
+                    <h3>Recipes </h3>
+                    <section class="general-list">
+                        {% for r in country.recipes %}
+                            <article>
+                                <div class="recipe-bg" style="{% if  r.mainImage is not null %}background-image: url({{ asset('uploads/images/recipes/'~ r.mainImage ~'') }}){% endif %}"></div>
+                                <div class="caption">
+                                    <h2>{{ r.name }}</h2>
+                                    <p>
+                                        {{ r.createdAt|date('M Y') }}
+                                    </p>
+                                    <a href="{{ path('recipe_show', {'slug': r.slug}) }}">View more</a>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </section>
+                {% else %}
+                    <p>Sorry no recipes found for {{ country }}. You can add one <a href="{{ path('recipe_add') }}">here</a></p>
+                {% endif %}
+            {% endif %}
+                
+        </div>
+    </div>
+
+{% endblock %}

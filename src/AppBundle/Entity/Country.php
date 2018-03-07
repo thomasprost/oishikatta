@@ -5,12 +5,15 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Country
  *
  * @ORM\Table(name="country")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CountryRepository")
+ * @Vich\Uploadable
  */
 class Country
 {
@@ -40,11 +43,31 @@ class Country
     private $nameJa;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="country_images", fileNameProperty="image")
+     *
+     * @var File
+     */
+    private $imageFile;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="country_flags_images", fileNameProperty="flagImage")
+     *
+     * @var File
+     */
+    private $flagImageFile;
+
 
     /**
      * @var string
@@ -133,6 +156,31 @@ class Country
     }
 
     /**
+     * @param File $image
+     */
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
      * Set image
      *
      * @param string $image
@@ -154,6 +202,31 @@ class Country
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * @param File $image
+     */
+
+    public function setFlagImageFile(File $flagImage = null)
+    {
+        $this->flagImageFile = $flagImage;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($flagImage) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getFlagImageFile()
+    {
+        return $this->flagImageFile;
     }
 
     /**

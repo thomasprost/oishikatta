@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+
 /**
  * RecipeRepository
  *
@@ -29,6 +30,7 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getArrayResult();
     }
+
 
     // Prevents a recipe to be parsed multiple times in a short time span (30 minutes)
     public function recipeJustCreated($link){

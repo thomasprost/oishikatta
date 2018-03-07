@@ -10,9 +10,11 @@
             {% if countries %}
                 {% for c in countries %}
                     <article>
-                        <img src="{{ asset('images/country/flags/'~ c.flagImage ~'') }}" alt="{{ c.name }}">
+                        <a href="{{ path('country_show', {'name': c.name}) }}">
+                        <img src="{{ asset('uploads/images/countries/flags/'~ c.flagImage ~'') }}" alt="{{ c.name }}">
                         <h4>{{ c.name }}</h4>
                         <h4>{{ c.nameJa }}</h4>
+                        </a>
                     </article>
                 {% endfor %}
             {% endif %}

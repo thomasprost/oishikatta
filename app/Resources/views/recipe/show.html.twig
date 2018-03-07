@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body_class %}show-recipe{% endblock %}
-{% block title %}{{ recipe.name }}{% endblock %}
+{% block title %}{% if recipe %}{{ recipe.name }}{% else %}Recipe not found{% endif %}{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -59,8 +59,15 @@
                         Delete this recipe
                     </a>
                 </div>
-
+            {% else %}
+                <h1>Recipe not found</h1>
+                <p>
+                    Sorry we couldn't find this recipe. 
+                    Check the <a href="{{ path('recipe_home') }}">recipe list</a> again ?
+                </p>
             {% endif %}
+            
+                
         </div>
     </div>
 
